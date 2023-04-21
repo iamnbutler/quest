@@ -9,7 +9,10 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@mdx-js/loader": "^2.3.0",
+        "@next/mdx": "^13.3.0",
         "@tailwindcss/typography": "^0.5.9",
+        "@types/mdx": "^2.0.4",
         "@types/node": "18.15.13",
         "@types/react": "18.0.38",
         "@types/react-dom": "18.0.11",
@@ -21,6 +24,7 @@
         "postcss": "8.4.23",
         "react": "18.2.0",
         "react-dom": "18.2.0",
+        "react-markdown": "^8.0.7",
         "react-ts-typewriter": "^0.1.8-b",
         "tailwindcss": "3.3.1",
         "typescript": "5.0.4",
