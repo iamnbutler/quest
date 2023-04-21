@@ -8,25 +8,13 @@ In the land of Atheria, once a powerful and prosperous kingdom, ruin and despair
 
 The eight provinces of Atheria are each home to one of the major guilds that play a crucial role in shaping the kingdom's society and economy.
 
-Sylveria, the western provence, is hoome to the Veiled Hand serves as the King's Guild, overseeing the regulation and discouraging the use of magic throughout the kingdom. The capital city of Sylveria, named Haven's Crest, is the seat of the nobility, and the place where the king resides and rules from. Haven's Crest's location on the ocean has made it wealthy due to trade, and the city has been a hub of commerce and politics since the kingdom's founding.
+Sylveria, the western province, is home to the Veiled Hand serves as the King's Guild, overseeing the regulation and discouraging the use of magic throughout the kingdom. The capital city of Sylveria, named Haven's Crest, is the seat of the nobility, and the place where the king resides and rules from. Haven's Crest's location on the ocean has made it wealthy due to trade, and the city has been a hub of commerce and politics since the kingdom's founding.
 
-The Holy Palm, the Paladin's Guild, can be found in Kael, in the north east by the ocean, where its members work to maintain law and order while upholding the virtues of justice and righteousness.
+In Calendria, in the northwest, the Disgraced Arcanists guild, known as the Sapphire Talon, was dismantled by the Veiled Hand 45 years ago, and its members are now forced to practice their magic in secret. The province of Calendria has a troubled history since the cataclysm. It was home to the famed Archanists Guide, the Sapphire Talon. The conflict between the Veiled Hand and the guild came to a head in the province forty-five years ago, leading to a large-scale clash that left many dead and the guild completely disbanded. The Veiled Hand has a significant presence in Calendria since, with agents garrisoned throughout the province. This has created animosity among the people who see them as oppressors, suppressing their craft and way of life. Many in Calendria resent the king and the capital for the suppression and regulation on magic, as the province has always been known for its skilled arcanists and their magical creations. The former members of the Sapphire Talon are now forced to practice much of their craft in secret, fearing retaliation by the Veiled Hand and its agents. Despite the unrest, the province is rich in natural resources, including fertile farmland and mineral deposits. Many skilled craftsmen still reside in Calendria, producing beautiful works of art and intricate devices, albeit without the use of major magics.
 
-The Iron Fist, the Blacksmith's Guild, is based in Calladore, in the south, where skilled craftsmen produce the weapons needed to keep Atheria's armies well-equipped and provide citizens with the tools they need.
+The Holy Palm, the Paladin's Guild, can be found in Kael, in the northeast by the ocean, where its members work to maintain law and order while upholding the virtues of justice and righteousness. The Artisan's Guild, known as the Silver Touch, is based on Scepter Isle, located a day to the west of Kael by sailing the ocean, and is responsible for producing beautiful and intricate works of art.
 
-Darador, to the east of Calladore, is home to the Steel Fingers, the Engineer's Guild, which works to improve the kingdom's infrastructure and technological advancements.
-
-The Crimson Claw, a guild of skilled mercenaries, is based in the province of Alderac, to the southwest of the kingdom.
-
-In Calendria, in the northwest, the Disgraced Arcanists guild, known as the Sapphire Talon, was dismantled by the Veiled Hand 45 years ago, and its members are now forced to practice their magic in secret.
-
-The province of Calendria, to the northweset, has a troubled history since the cataclysm. It was home to the famed Archanists Guide, the Saphire Talon. The conflict between the Veiled Hand and the guild came to a head in the province fourty-five years ago, leading to a large-scale clash that left many dead and the guild completely disbanded.
-
-The Veiled Hand has a significant presence in Calendria since, with agents garrisoned throughout the province. This has created animosity among the people who see them as oppressors, suppressing their craft and way of life. Many in Calendria resent the king and the capital for the suppression and regulation on magic, as the province has always been known for its skilled arcanists and their magical creations. The former members of the Sapphire Talon are now forced to practice much of their craft in secret, fearing retaliation by the Veiled Hand and it's agents.
-
-Despite the unrest, the province is rich in natural resources, including fertile farmland and mineral deposits. Many skilled craftsmen still reside in Calendria, producing beautiful works of art and intricate devices, albeit without the use of major magics.
-
-The Artisan's Guild, known as the Silver Touch, is based on Scepter Isle, located a day to the west of Kael by sailing the ocean, and is responsible for producing beautiful and intricate works of art.
+Darador, to the east of Calladore, is home to the Steel Fingers, the Engineer's Guild, which works to improve the kingdom's infrastructure and technological advancements. The Crimson Claw, a guild of skilled mercenaries, is based in the province of Alderac, to the southwest of the kingdom.
 
 Finally, the Gilded Grasp, a powerful merchant guild, is located in the province of Arcton, on the northern border, sharing a border with Drogath, where the town of Sorrow's Reach is situated.
 
@@ -34,8 +22,13 @@ To the north of Atheria lies the kingdom of Drogath, a land shrouded in mystery 
 
 To the east of Atheria lies the vast desert of Eriador, a harsh and unforgiving land that only the most skilled travelers dare to venture into. The nomadic tribes that roam the desert have a reputation for being fiercely independent and hostile to outsiders, making crossing the border a perilous journey.
 
-There is a growing presence of a militant offshoot of the Veiled Hand, known as the Shadowed Fist, has begun to alarm both the king and the kingdom's inhabitants. This group takes extreme measures against those still practicing magic. Their goals and members are unknown, threatening, and terrifying to ordinary people.
+The Shadowed Fist is a secret organization that operates outside the official recognition of the king and the Veiled Hand. This militant offshoot has been causing increasing alarm among both the ruling powers and ordinary citizens of Atheria.
 
+The group has been targeting citizens of Calendria and anyone with even a slight connection to the disbanded Sapphire Talon. The Shadowed Fist takes extreme measures against those still practicing magic, leaving no evidence behind and making the lives of anyone deemed too liberal with their use of magic a living hell.
+
+There are various theories about the Shadowed Fist, and their true goals and members remain unknown. Some people believe that they are the king's secret enforcer group, carrying out his orders to suppress any potential threat to the kingdom. Others see them as a group of anti-magic zealots who are capitalizing on the tension between the citizens of Calendria and the Veiled Hand.
+
+Regardless of their true motives, the presence of the Shadowed Fist is a growing concern in Atheria, and many fear that they will only bring more turmoil and suffering to a kingdom already on the brink of ruin.
 Introduction: Life in Sorrow's Reach
 
 The Village of Sorrow's Reach - The player character (PC) resides in a small village called Sorrow's Reach. Nestled in a valley surrounded by dense forests, the town is home to a close-knit community of a few hundred people. Among them are farmers, blacksmiths, weavers, and other tradespeople who form the backbone of the village's economy. Life in Sorrow's Reach is simple, and the villagers have survived by adapting to a non-magical way of life. A few individuals still practice small magics but keep their abilities hidden.
