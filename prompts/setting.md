@@ -6,7 +6,35 @@ I. Exposition
 
 In the land of Atheria, once a powerful and prosperous kingdom, ruin and despair now reign. Magic, the kingdom's former backbone, has dwindled into a scarce and dangerous resource. The arcane arts, previously revered, are now feared and strictly regulated by a royal guild known as the Veiled Hand. Established by the king to investigate the cause of Atheria's downfall, the guild is determined to restore the kingdom to its former glory.
 
-However, the growing presence of a militant offshoot of the Veiled Hand, known as the Shadowed Fist, has begun to alarm both the king and the kingdom's inhabitants. This group takes extreme measures against those still practicing magic. Their goals and members are unknown, threatening, and terrifying to ordinary people.
+The eight provinces of Atheria are each home to one of the major guilds that play a crucial role in shaping the kingdom's society and economy.
+
+Sylveria, the western provence, is hoome to the Veiled Hand serves as the King's Guild, overseeing the regulation and discouraging the use of magic throughout the kingdom. The capital city of Sylveria, named Haven's Crest, is the seat of the nobility, and the place where the king resides and rules from. Haven's Crest's location on the ocean has made it wealthy due to trade, and the city has been a hub of commerce and politics since the kingdom's founding.
+
+The Holy Palm, the Paladin's Guild, can be found in Kael, in the north east by the ocean, where its members work to maintain law and order while upholding the virtues of justice and righteousness.
+
+The Iron Fist, the Blacksmith's Guild, is based in Calladore, in the south, where skilled craftsmen produce the weapons needed to keep Atheria's armies well-equipped and provide citizens with the tools they need.
+
+Darador, to the east of Calladore, is home to the Steel Fingers, the Engineer's Guild, which works to improve the kingdom's infrastructure and technological advancements.
+
+The Crimson Claw, a guild of skilled mercenaries, is based in the province of Alderac, to the southwest of the kingdom.
+
+In Calendria, in the northwest, the Disgraced Arcanists guild, known as the Sapphire Talon, was dismantled by the Veiled Hand 45 years ago, and its members are now forced to practice their magic in secret.
+
+The province of Calendria, to the northweset, has a troubled history since the cataclysm. It was home to the famed Archanists Guide, the Saphire Talon. The conflict between the Veiled Hand and the guild came to a head in the province fourty-five years ago, leading to a large-scale clash that left many dead and the guild completely disbanded.
+
+The Veiled Hand has a significant presence in Calendria since, with agents garrisoned throughout the province. This has created animosity among the people who see them as oppressors, suppressing their craft and way of life. Many in Calendria resent the king and the capital for the suppression and regulation on magic, as the province has always been known for its skilled arcanists and their magical creations. The former members of the Sapphire Talon are now forced to practice much of their craft in secret, fearing retaliation by the Veiled Hand and it's agents.
+
+Despite the unrest, the province is rich in natural resources, including fertile farmland and mineral deposits. Many skilled craftsmen still reside in Calendria, producing beautiful works of art and intricate devices, albeit without the use of major magics.
+
+The Artisan's Guild, known as the Silver Touch, is based on Scepter Isle, located a day to the west of Kael by sailing the ocean, and is responsible for producing beautiful and intricate works of art.
+
+Finally, the Gilded Grasp, a powerful merchant guild, is located in the province of Arcton, on the northern border, sharing a border with Drogath, where the town of Sorrow's Reach is situated.
+
+To the north of Atheria lies the kingdom of Drogath, a land shrouded in mystery and shunned by most Atherians. The people of Drogath are rumored to possess dark powers and practice forbidden magic. Despite the rumors, the kingdom has remained isolated and peaceful, allowing Atherians to cross the border freely.
+
+To the east of Atheria lies the vast desert of Eriador, a harsh and unforgiving land that only the most skilled travelers dare to venture into. The nomadic tribes that roam the desert have a reputation for being fiercely independent and hostile to outsiders, making crossing the border a perilous journey.
+
+There is a growing presence of a militant offshoot of the Veiled Hand, known as the Shadowed Fist, has begun to alarm both the king and the kingdom's inhabitants. This group takes extreme measures against those still practicing magic. Their goals and members are unknown, threatening, and terrifying to ordinary people.
 
 Introduction: Life in Sorrow's Reach
 
@@ -16,7 +44,7 @@ The Surrounding Landscape - Sorrow's Reach is one of three small towns within a 
 
 Daily Life in Sorrow's Reach - The villagers of Sorrow's Reach work diligently to support their community. Farmers like Old Thomas and his family tend to their crops and livestock, providing food for the village. The blacksmith, Master Rowan, forges tools, weapons, and other necessities, while the weaver, Mistress Elara, crafts clothes and textiles. The village also has a small tavern called The Weary Wanderer, run by a jovial man named Brin, where locals gather to share stories, news, and camaraderie.
 
-The PC's Backstory - The PC is an adult apprentice to the village blacksmith, Master Rowan. Over the years, Rowan has taught the PC the art of metalworking, forging horseshoes, plowshares, and simple weapons. The PC's closest friends are Elias, Old Thomas's son, who shares the PC's love for adventure; Layla, a quiet young woman who spends her days studying old scrolls and books and Seraphina, an intelligent, fiery warrior-to-be, who practices combat with PC.
+The Player Characters's Backstory - The PC is an adult apprentice to the village blacksmith, Master Rowan. Over the years, Rowan has taught the PC the art of metalworking, forging horseshoes, plowshares, and simple weapons. The PC's closest friends are Elias, Old Thomas's son, who shares the PC's love for adventure; Layla, a quiet young woman who spends her days studying old scrolls and books and Seraphina, an intelligent, fiery warrior-to-be, who practices combat with PC.
 
 The PC's relationship with Elias is playful, filled with good-natured teasing, and shared dreams of a life beyond Sorrow's Reach. Elias is a spirited young man who helps his father on the farm and is knowledgeable about the local flora and fauna. He often joins the PC on small adventures into the nearby forests, teaching them about the various plants and animals they encounter. Elias's optimism and sense of wonder profoundly impact the PC, instilling in them a sense of hope and a desire to explore the world outside their village.
 
