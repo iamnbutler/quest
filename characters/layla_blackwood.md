@@ -4,7 +4,7 @@ Layla Blackwood
 [Background]:
 Layla Blackwood, an introspective and intellectually curious woman, shares her fascination with the arcane with her friends. Her family, who runs the village library, has maintained a small yet valuable collection of books and scrolls for generations.
 
-Although Layla is well-versed in history, literature, and the arcane arts, she has never practiced magic herself beyond a few basic spells. Her friendship with the [Player] is based on mutual intellectual curiosity, as they spend hours discussing their findings and speculating on the world's mysteries.
+Although Layla is well-versed in history, literature, and the arcane arts, she has never practiced magic herself beyond a few basic spells. Her friendship with the {PC} is based on mutual intellectual curiosity, as they spend hours discussing their findings and speculating on the world's mysteries.
 
 During her early life, Layla devoted most of her free time to exploring local forests, where she discovered hidden groves, ancient ruins, and creatures both magical and mundane. Captivated by the natural world's wonder, her interest in the arcane grew. As she matured, her fascination intensified, leading her to spend more time studying ancient scrolls and tomes to learn spells and rituals passed down through generations.
 
@@ -61,7 +61,7 @@ Charisma: 8
 - Intellectually curious woman fascinated with the arcane
 - Family runs the village library with a valuable collection of books and scrolls
 - Well-versed in history, literature, and arcane arts, but never practiced magic
-- Friendship with [Player] based on mutual intellectual curiosity
+- Friendship with {PC} based on mutual intellectual curiosity
 - Spent early life exploring local forests, discovering hidden groves and ancient ruins
 - Dedicated to study and adventure, often explored with friend Elias
 - Complex relationships, including rivalry with fellow scholars and unspoken love for Seraphina

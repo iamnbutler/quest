@@ -1,6 +1,6 @@
 Act I: The Shattered Cliffs
 
-Introduction - The player character (PC) is a simple commoner living in a small, isolated village named Sorrow's Reach. Life has been harsh since the fall of Atheria, but the villagers have managed to survive by adapting to a non-magical way of life. Some people still practice small magics but keep them to themselves. The PC has always been curious about the world beyond their village, but the fear of the dangers of the outside world and the chaotic upheaval magic has wrought in the kingdom have kept them from venturing out.
+Introduction - The {PC} is a simple commoner living in a small, isolated village named Sorrow's Reach. Life has been harsh since the fall of Atheria, but the villagers have managed to survive by adapting to a non-magical way of life. Some people still practice small magics but keep them to themselves. The PC has always been curious about the world beyond their village, but the fear of the dangers of the outside world and the chaotic upheaval magic has wrought in the kingdom have kept them from venturing out.
 
 The Curious Stranger - One day, a mysterious traveler arrives in Sorrow's Reach, seeking shelter and sharing stories of the world beyond. The stranger's stories captivate the PC and inspire a burning desire to explore and learn about the lost arts of magic.
 

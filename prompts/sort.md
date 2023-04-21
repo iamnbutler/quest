@@ -1,10 +1,4 @@
-Introduce a side quest:
 
-Think about the overall story or plot of your game. What are some tasks or objectives that are related but not essential to the main quest? These could make good side quests.
-
-Consider the setting and characters in your game. Is there a minor character who could offer a quest or task to the player? Is there an object or location that could lead to a side quest?
-
-Try to make the side quest interesting and engaging. It should be challenging enough to be rewarding, but not so difficult that it feels impossible.
 
 ===
 

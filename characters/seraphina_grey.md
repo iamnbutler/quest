@@ -1,5 +1,5 @@
 [Background]
-Seraphina Grey, a determined and strong-willed young woman, born into an 8th generation noble family that fell from grace during the Fall of Atheria. Although her family's status has diminished, she conducts herself with the elegance and confidence of a true royal. Seraphina is driven by her love for learning, fighting, and exploring with her closest friends, particularly the [Player], Elias, and Layla, fueling her hunger for growth and self-improvement.
+Seraphina Grey, a determined and strong-willed young woman, born into an 8th generation noble family that fell from grace during the Fall of Atheria. Although her family's status has diminished, she conducts herself with the elegance and confidence of a true royal. Seraphina is driven by her love for learning, fighting, and exploring with her closest friends, particularly the {PC}, Elias, and Layla, fueling her hunger for growth and self-improvement.
 
 Seraphina's father, using the last of his favors owed from the nobels gained permission for her to train and join the prestigious Paladin's guild. Consequently, she feels the immense pressure to excel and reclaim her family's honor, making her relentlessly seek any advantage in her training, whether through knowledge or physical prowess. Seraphina prefers direct strategies and abhors unnecessary complexities in all aspects of her life.
 
