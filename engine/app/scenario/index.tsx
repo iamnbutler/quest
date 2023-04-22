@@ -3,6 +3,7 @@ import { useState } from "react"
 import Typewriter from "react-ts-typewriter"
 import { scenario } from "../game/action"
 import { PromptContext } from "../prompt";
+import Choices from "../ui/choices";
 
 export interface DecisionWithContext extends Omit<PromptContext, 'choice'> {
     text: string
@@ -11,6 +12,13 @@ export interface DecisionWithContext extends Omit<PromptContext, 'choice'> {
 
 function decisionWithContext({ text, context, actions, party_members }: DecisionWithContext) {
     const Scenario = new scenario()
+
+    if (!context) {
+        throw new Error('Context is required')
+    }
+
+    const choices = Scenario.choices({ context, actions, party_members })
+
     const [showChoices, setShowChoices] = useState(false)
 
     if (!context) {
@@ -26,8 +34,9 @@ function decisionWithContext({ text, context, actions, party_members }: Decision
                 }}
             />
             {showChoices && (
-                <Scenario.InitialChoices context={context} actions={actions} party_members={party_members} />
-            )}
+                <Choices
+                    choices={choices}
+                />)}
         </section>
     )
 }
