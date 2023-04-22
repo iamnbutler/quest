@@ -61,7 +61,7 @@ Charisma: 8
 - Intellectually curious woman fascinated with the arcane
 - Family runs the village library with a valuable collection of books and scrolls
 - Well-versed in history, literature, and arcane arts, but never practiced magic
-- Friendship with {PC} based on mutual intellectual curiosity
+- Friendship with Player based on mutual intellectual curiosity
 - Spent early life exploring local forests, discovering hidden groves and ancient ruins
 - Dedicated to study and adventure, often explored with friend Elias
 - Complex relationships, including rivalry with fellow scholars and unspoken love for Seraphina

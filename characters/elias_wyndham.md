@@ -1,7 +1,7 @@
 [Background]
 Elias Wyndham, a spirited young man, is Layla's childhood friend who shares her love for adventure. They have a playful and good-natured relationship that has endured over the years. Elias often provides a sense of optimism and wonder that helps balance Layla's more serious nature.
 
-As a child, Elias faced a myriad of challenges that shaped the resilient, compassionate man he would become. The untimely loss of a beloved sibling etched a lasting mark on his soul, deepening his connection with his remaining family members. Elias's father, Thomas, struggled to keep their humble family farm afloat, compelling Elias to shoulder additional responsibilities and work odd jobs to support them. This burden ignited within Elias a fear of being left behind by his more academically inclined friends, such as Layla and the PC.
+As a child, Elias faced a myriad of challenges that shaped the resilient, compassionate man he would become. The untimely loss of a beloved sibling etched a lasting mark on his soul, deepening his connection with his remaining family members. Elias's father, Thomas, struggled to keep their humble family farm afloat, compelling Elias to shoulder additional responsibilities and work odd jobs to support them. This burden ignited within Elias a fear of being left behind by his more academically inclined friends, such as Layla and the Player.
 
 Yet, Elias's dedication to his family remained unwavering. He shared a special bond with his younger sister, Emma, who idolized him. Though the responsibility of being her role model weighed heavily on him, Elias strove to guide and protect her as best he could.
 

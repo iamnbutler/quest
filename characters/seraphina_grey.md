@@ -15,6 +15,6 @@ In response, she withdrew from her friends and training partners, dedicating eve
 
 Seraphina and Layla share a nuanced relationship, colored by unspoken affection. Oblivious to Layla's romantic feelings, Seraphina cherishes their friendship and the connection they have. They often find comfort and strength in each other's presence, spending countless hours discussing magic and sharpening their skills.
 
-As Seraphina trains with the PC and Gareth, her unwavering commitment and bravery shine through. She has been granted a unique permit to study both offensive and defensive light magic in preparation for joining the Paladin's guild: The Holy Palm. Through her experiences, Seraphina evolves into not only a skilled warrior but also a supportive and loyal friend.
+As Seraphina trains with the Player and Gareth, her unwavering commitment and bravery shine through. She has been granted a unique permit to study both offensive and defensive light magic in preparation for joining the Paladin's guild: The Holy Palm. Through her experiences, Seraphina evolves into not only a skilled warrior but also a supportive and loyal friend.
 
 Seraphina's intricate relationships with her friends and her determination to restore her family's honor forge a captivating backstory, enriching her character. Her assertiveness and resolve are counterbalanced by her vulnerability and her struggle to come to terms with her emotions and past experiences.

@@ -1,4 +1,4 @@
-interface PromptProps {
+export interface PromptContext {
     common?: string;
     context?: string;
     choice?: string;
@@ -46,7 +46,7 @@ export function createDecisionPoint({
     context,
     choice,
     party_members,
-}: PromptProps): Prompt {
+}: PromptContext): Prompt {
     const system = common
 
     const user = `
@@ -65,7 +65,7 @@ Checks:
 Format:
 - Party Members discuss options, react to previous <decision point>.
 - Sometimes Party Members have discussions or side conversations related to quest, <decision point>, [Location], or story. Can be humorous, sad, serious, reflective, or just small talk.
-- Present <decision points> at the end. Put $$$ before and after the numbered list of <decision points>.
+- Present <decision points> at the end. Put $$$ on a newline before the numbered list of <decision points>.
 - Only one set of <decision points> active at a time.
 
 Party Members should not:

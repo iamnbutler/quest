@@ -1,35 +1,44 @@
 import { useState } from "react";
 import * as prompts from "../prompt";
 import { ChatCompletionResponseMessage } from "openai";
-
-type Action = string;
+import { Prompt } from "../prompt";
 
 interface ActionsProps {
     context: string;
-    actions: Action[];
+    actions: string[];
     party_members: string;
 }
 
-export default function Actions({
-    context,
-    actions,
-    party_members,
-}: ActionsProps) {
-    const [result, setResult] = useState<ChatCompletionResponseMessage | undefined>();
+interface ParsedResponseMessage {
+    originalMessage: string;
+    matchedLines: string[];
+}
 
-    async function onSubmit(
-        event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-        action: Action
-    ) {
+class scenario {
+    private parseResponseMessage(message: ChatCompletionResponseMessage): ParsedResponseMessage {
+        const blockPattern = /$$$(.*)/s;
+        const match = message.content.match(blockPattern);
+
+        if (match) {
+            const blockContent = match[1];
+            const lines = blockContent.split('\n');
+            const nonEmptyLines = lines.filter(line => line.trim() !== '');
+            const filteredLines = nonEmptyLines.map(line => line.replace(/^\d+\.\s/, ''));
+            return {
+                originalMessage: message.content.replace(blockPattern, '').trim(),
+                matchedLines: filteredLines
+            };
+        } else {
+            return {
+                originalMessage: message.content,
+                matchedLines: []
+            };
+        }
+    }
+
+    async getResponseMessage(event: React.MouseEvent<HTMLButtonElement, MouseEvent>, prompt: Prompt) {
+        const [result, setResult] = useState<ChatCompletionResponseMessage | undefined>();
         event.preventDefault();
-
-        const prompt = prompts.createDecisionPoint({
-            context,
-            choice: action,
-            party_members,
-        });
-
-        console.log(JSON.stringify(prompt, null, 2));
 
         try {
             const response = await fetch("/api/generate", {
@@ -50,25 +59,65 @@ export default function Actions({
 
             setResult(data.result);
 
-            console.log(JSON.stringify(data, null, 2));
         } catch (error) {
             console.error(error);
             throw (error as string) || new Error("Something went wrong");
         }
+
+        return result;
     }
 
-    return (
-        <>
+    InitialChoices({ context, actions, party_members }: ActionsProps) {
+        const prompt = (choice: string) => prompts.createDecisionPoint({
+            context,
+            choice,
+            party_members,
+        });
+
+        const choices = actions.map((choice, index) => (
+            <li key={index}>
+                <button type="button" onClick={(event) => this.getResponseMessage(event, prompt(choice))}>
+                    {choice}
+                </button>
+            </li>
+        ));
+
+        return (
             <ol>
-                {actions.map((action, index) => (
-                    <li key={index}>
-                        <button type="button" onClick={(event) => onSubmit(event, action)}>
-                            {action}
-                        </button>
-                    </li>
-                ))}
+                {choices}
             </ol>
-            {result && <p>{result.content}</p>}
-        </>
-    );
+        );
+    }
+
+    choices({ context, actions, party_members }: ActionsProps) {
+        const prompt = (choice: string) => prompts.createDecisionPoint({
+            context,
+            choice,
+            party_members,
+        });
+
+        const choices = actions.map((choice, index) => (
+            <li key={index}>
+                <button type="button" onClick={(event) => this.getResponseMessage(event, prompt(choice))}>
+                    {choice}
+                </button>
+            </li>
+        ));
+
+        return (
+            <ol>
+                {choices}
+            </ol>
+        );
+    }
+
+    Actions({ context, actions, party_members }: ActionsProps) {
+        return (
+            <>
+                {this.choices({ context, actions, party_members })}
+            </>
+        );
+    }
 }
+
+export { scenario }
