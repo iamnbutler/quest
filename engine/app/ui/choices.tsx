@@ -3,12 +3,14 @@ import { useState } from "react";
 import { BuildPromptProperties, createDecisionPoint } from "../prompt";
 import clsx from "clsx";
 import { scenario } from "../game/action";
+import { slugify } from "@/app/lib/slugify"
+import { ThickArrowRightIcon } from "@radix-ui/react-icons";
 
 interface ChoiceProps {
     promptProperties: BuildPromptProperties;
     choice: string;
     onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-    picked: boolean;
+    picked: string;
     disable: boolean;
 }
 
@@ -19,7 +21,7 @@ interface ChoicesProps {
 
 export default function Choices(props: ChoicesProps) {
     const Scenario = new scenario()
-    const [choicePicked, setChoicePicked] = useState(false);
+    const [choicePicked, setChoicePicked] = useState('');
     const [choicesComplete, setChoicesComplete] = useState(false);
 
     const { promptProperties, choices } = props;
@@ -30,14 +32,19 @@ export default function Choices(props: ChoicesProps) {
         picked,
         disable,
     }: ChoiceProps) => {
+        const slug = slugify(choice);
+        const isPicked = picked === slug;
+
         const buttonStyle = clsx(
-            picked
-                ? "text-white"
+            isPicked
+                ? "border-white/80"
                 : disable
-                    ? "text-white/70"
-                    : "text-white/30",
-            'border border-transparent px-4 py-1 text-sm',
-            'hover:border-white/20'
+                    ? "text-white/50 cursor-not-allowed"
+                    : "text-white hover:border-white/40 cursor-pointer",
+            'border border-transparent px-2 py-1 text-sm',
+            // Sets the text to be the same height as the icon
+            'text-iconHeight',
+            'flex items-center gap-2'
         )
 
         const updateChoice = choice
@@ -50,18 +57,23 @@ export default function Choices(props: ChoicesProps) {
                 onClick={(event) => {
                     event.preventDefault();
                     Scenario.getResponseMessage(prompt);
-                    setChoicePicked(true);
+                    setChoicePicked(slug);
                     setChoicesComplete(true);
                 }}
                 disabled={disable}
             >
-                {choice}
+                <ThickArrowRightIcon
+                    className={clsx(
+                        isPicked ? "text-white" : "text-white/10"
+                    )}
+                />
+                <span>{choice}</span>
             </button>
         )
     }
 
     return (
-        <ol>
+        <ol className="my-4 p-0 -ml-2 not-prose flex flex-col">
             {choices.map((choice, ix) => (
                 <Choice
                     key={ix}

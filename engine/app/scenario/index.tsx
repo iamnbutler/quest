@@ -7,17 +7,14 @@ import useMessageStore from "../stores/messages";
 
 export interface DecisionWithContext extends Omit<PromptContext, 'choice'> {
     text: string
-    actions: string[]
 }
 
-function decisionWithContext({ text, context, actions, party_members }: DecisionWithContext) {
-
+function decisionWithContext({ text, context, party_members }: DecisionWithContext) {
     if (!context) {
         throw new Error('Context is required')
     }
 
-    // TODO: Set this to false when not debugging
-    const [showChoices, setShowChoices] = useState(true)
+    const [showChoices, setShowChoices] = useState(false)
 
     if (!context) {
         throw new Error('Context is required')
@@ -36,9 +33,11 @@ function decisionWithContext({ text, context, actions, party_members }: Decision
         <section>
             <Typewriter
                 text={text}
+                speed={8}
                 onFinished={() => {
                     setShowChoices(true)
                 }}
+                cursor={showChoices ? false : true}
             />
             {showChoices && (
                 <Choices promptProperties={promptProperties} choices={choices} />

@@ -9,7 +9,6 @@ export default function Home() {
     return (
         <>
             <InitialScenario />
-            <p>{messages.length}</p>
         </>
     );
 }

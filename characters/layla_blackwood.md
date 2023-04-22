@@ -4,7 +4,7 @@ Layla Blackwood
 [Background]:
 Layla Blackwood, an introspective and intellectually curious woman, shares her fascination with the arcane with her friends. Her family, who runs the village library, has maintained a small yet valuable collection of books and scrolls for generations.
 
-Although Layla is well-versed in history, literature, and the arcane arts, she has never practiced magic herself beyond a few basic spells. Her friendship with the {PC} is based on mutual intellectual curiosity, as they spend hours discussing their findings and speculating on the world's mysteries.
+Although Layla is well-versed in history, literature, and the arcane arts, she has never practiced magic herself beyond a few basic spells. Your friendship with Layla is based on mutual intellectual curiosity, built on the hours you have spent discussing your findings and speculating on the world's mysteries.
 
 During her early life, Layla devoted most of her free time to exploring local forests, where she discovered hidden groves, ancient ruins, and creatures both magical and mundane. Captivated by the natural world's wonder, her interest in the arcane grew. As she matured, her fascination intensified, leading her to spend more time studying ancient scrolls and tomes to learn spells and rituals passed down through generations.
 
