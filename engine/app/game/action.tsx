@@ -23,6 +23,7 @@ export interface ParsedResponseMessage {
 
 class scenario {
     async getResponseMessage(event: React.MouseEvent<HTMLButtonElement, MouseEvent>, prompt: Prompt) {
+
         const result = await this.fetchResponseMessage(prompt);
 
         const parsedResponse = this.parseResponseMessage(result);
@@ -59,13 +60,14 @@ class scenario {
     }
 
     async fetchResponseMessage(prompt: Prompt) {
+
         try {
             const response = await fetch("/api/generate", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ prompt: prompt }),
+                body: JSON.stringify({ messages: prompt }),
             });
 
             const data = await response.json();

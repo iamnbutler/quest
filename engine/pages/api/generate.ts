@@ -1,59 +1,59 @@
-import { Configuration, OpenAIApi } from "openai";
-import { Prompt } from "../../app/prompt";
-import { NextRequest, NextResponse } from "next/server";
+import { ChatCompletionRequestMessage, Configuration, CreateChatCompletionResponse, OpenAIApi } from 'openai';
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-// Initialize OpenAI API configuration
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
-/**
- * Handler function for the API endpoint.
- */
-export default async function handleAPIRequest(
-    req: NextRequest,
-    res: NextResponse
+export type Message = ChatCompletionRequestMessage
+
+export interface RequestParams {
+    params: {
+        messages: Message[]
+    }
+}
+
+interface CustomError extends Error {
+    response?: {
+        status: number;
+        data: string;
+    };
+    message: string
+}
+
+function isCustomError(error: Error): error is CustomError {
+    return (error as CustomError).response !== undefined;
+}
+
+export default async function handler(
+    req: NextApiRequest,
+    res: NextApiResponse<CreateChatCompletionResponse>
 ) {
-    // Ensure that the request object is not null
-    if (!req || req.body === null) {
-        new Response("No request object", { status: 500 });
-        return
-    }
+    // const messages: ChatCompletionRequestMessage[] = [
+    //     { "role": "system", "content": "You are a helpful assistant." },
+    //     { "role": "user", "content": "Who won the world series in 2020?" },
+    //     { "role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020." },
+    //     { "role": "user", "content": "Where was it played?" }
+    // ]
 
-    console.log(JSON.stringify(req.body))
-
-    // Parse the input prompt from the request body
-    const inputPrompt: Prompt = req.body.prompt || [];
-
-    // Check if the OpenAI API key is configured
-    if (!configuration.apiKey) {
-        new Response("OpenAI API key not configured", { status: 500 });
-        return
-    }
+    const { messages } = req.body
 
     try {
-        // Call the OpenAI API to create a chat completion
-        const completion = await openai.createChatCompletion({
-            model: "gpt-3.5-turbo",
-            messages: inputPrompt,
+        const result = await openai.createChatCompletion({
+            model: 'gpt-3.5-turbo',
+            messages,
+            max_tokens: 2000,
         });
-
-        // Return the response from the API
-        return new Response(
-            JSON.stringify(completion.data.choices[0].message),
-            { status: 200 }
-        );
+        console.log(JSON.stringify(result.data, null, 2));
+        return res.status(200).json(result.data);
     } catch (error) {
-        // Handle errors from the OpenAI API
-        if (error.response) {
-            console.error(error.response.status, error.response.data);
-            return res.status(error.response.status).json(error.response.data);
+        const e: CustomError = error as CustomError;
+        if (isCustomError(error as Error)) {
+            console.log(e.response!.status);
+            console.log(e.response!.data);
         } else {
-            console.error(`Error with OpenAI API request: ${error.message}`);
-            return new Response("An error occurred during your request.", {
-                status: 500,
-            });
+            console.log(e.message);
         }
     }
 }

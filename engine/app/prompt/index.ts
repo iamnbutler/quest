@@ -1,15 +1,12 @@
+import { ChatCompletionRequestMessage } from "openai";
+
 export interface PromptContext {
     common?: string;
     context?: string;
     choice?: string;
     party_members: string;
 }
-
-export type Message = {
-    role: "system" | "user";
-    content: string
-}
-
+export type Message = ChatCompletionRequestMessage
 export type Prompt = Message[]
 
 const common = ``;

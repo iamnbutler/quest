@@ -19,7 +19,8 @@ function decisionWithContext({ text, context, actions, party_members }: Decision
 
     const choices = Scenario.choices({ context, actions, party_members })
 
-    const [showChoices, setShowChoices] = useState(false)
+    // TODO: Set this to false when not debugging
+    const [showChoices, setShowChoices] = useState(true)
 
     if (!context) {
         throw new Error('Context is required')
