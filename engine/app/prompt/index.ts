@@ -6,6 +6,8 @@ export interface PromptContext {
     choice?: string;
     party_members: string;
 }
+
+export type BuildPromptProperties = PromptContext
 export type Message = ChatCompletionRequestMessage
 export type Prompt = Message[]
 

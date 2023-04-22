@@ -3,7 +3,7 @@ import { ChatCompletionResponseMessage } from "openai";
 import { Prompt } from "../prompt";
 import useMessageStore, { Store } from "../stores/messages";
 
-interface ChoiceProps {
+export interface ChoiceProps {
     context: string;
     choice: string;
     party_members: string;
@@ -22,9 +22,8 @@ export interface ParsedResponseMessage {
 }
 
 class scenario {
-    async getResponseMessage(event: React.MouseEvent<HTMLButtonElement, MouseEvent>, prompt: Prompt) {
-
-        const result = await this.fetchResponseMessage(prompt);
+    async getResponseMessage(prompt: Prompt) {
+        const result = await this.getMessages(prompt);
 
         const parsedResponse = this.parseResponseMessage(result);
         useMessageStore.setState((state: Store) => ({
@@ -50,17 +49,23 @@ class scenario {
                 message: message.content.replace(choiceDelimiter, "").trim(),
                 choices: choiceLines,
             };
-        } else {
+        } else if (message.content) {
             return {
                 originalMessage: message.content,
                 message: "",
                 choices: [],
             };
+        } else {
+            console.log('Message without content')
+            return {
+                originalMessage: "",
+                message: "",
+                choices: [],
+            }
         }
     }
 
-    async fetchResponseMessage(prompt: Prompt) {
-
+    async getMessages(prompt: Prompt) {
         try {
             const response = await fetch("/api/generate", {
                 method: "POST",
@@ -74,14 +79,14 @@ class scenario {
             if (response.status !== 200) {
                 throw (
                     (data.error as string) ||
-                    new Error(`Request failed with status ${response.status}`)
+                    new Error(`scenario.getMessages: Request failed with status ${response.status}`)
                 );
             }
 
             return data.result;
         } catch (error) {
             console.error(error);
-            throw (error as string) || new Error("Something went wrong");
+            throw (error as string) || new Error("scenario.getMessages: Something went wrong");
         }
     }
 
@@ -94,10 +99,24 @@ class scenario {
         });
 
         return (
-            <button type="button" onClick={(event) => this.getResponseMessage(event, prompt)}>
+            <button type="button" onClick={(event) => {
+                event.preventDefault();
+                this.getResponseMessage(prompt);
+            }}>
                 {choice}
             </button>
         );
+    }
+
+    getChoiceProps(props: ChoicesProps) {
+        const { context, actions, party_members } = props;
+        const choiceProps = actions.map((choice) => ({
+            context,
+            choice,
+            party_members,
+        }));
+
+        return choiceProps;
     }
 
     choices(props: ChoicesProps) {

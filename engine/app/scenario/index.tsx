@@ -1,9 +1,9 @@
 'use client'
 import { useState } from "react"
 import Typewriter from "react-ts-typewriter"
-import { scenario } from "../game/action"
-import { PromptContext } from "../prompt";
+import { BuildPromptProperties, PromptContext } from "../prompt";
 import Choices from "../ui/choices";
+import useMessageStore from "../stores/messages";
 
 export interface DecisionWithContext extends Omit<PromptContext, 'choice'> {
     text: string
@@ -11,19 +11,25 @@ export interface DecisionWithContext extends Omit<PromptContext, 'choice'> {
 }
 
 function decisionWithContext({ text, context, actions, party_members }: DecisionWithContext) {
-    const Scenario = new scenario()
 
     if (!context) {
         throw new Error('Context is required')
     }
-
-    const choices = Scenario.choices({ context, actions, party_members })
 
     // TODO: Set this to false when not debugging
     const [showChoices, setShowChoices] = useState(true)
 
     if (!context) {
         throw new Error('Context is required')
+    }
+
+    const choices = useMessageStore(state => state.currentResponse?.choices || [])
+    const emptyChoice = ''
+
+    const promptProperties: BuildPromptProperties = {
+        context,
+        choice: emptyChoice,
+        party_members,
     }
 
     return (
@@ -35,9 +41,8 @@ function decisionWithContext({ text, context, actions, party_members }: Decision
                 }}
             />
             {showChoices && (
-                <Choices
-                    choices={choices}
-                />)}
+                <Choices promptProperties={promptProperties} choices={choices} />
+            )}
         </section>
     )
 }

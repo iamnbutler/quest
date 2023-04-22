@@ -1,4 +1,4 @@
-import { ChatCompletionRequestMessage, Configuration, CreateChatCompletionResponse, OpenAIApi } from 'openai';
+import { ChatCompletionRequestMessage, Configuration, CreateChatCompletionResponseChoicesInner, OpenAIApi } from 'openai';
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 const configuration = new Configuration({
@@ -28,15 +28,8 @@ function isCustomError(error: Error): error is CustomError {
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<CreateChatCompletionResponse>
+    res: NextApiResponse<CreateChatCompletionResponseChoicesInner>
 ) {
-    // const messages: ChatCompletionRequestMessage[] = [
-    //     { "role": "system", "content": "You are a helpful assistant." },
-    //     { "role": "user", "content": "Who won the world series in 2020?" },
-    //     { "role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020." },
-    //     { "role": "user", "content": "Where was it played?" }
-    // ]
-
     const { messages } = req.body
 
     try {
@@ -46,7 +39,7 @@ export default async function handler(
             max_tokens: 2000,
         });
         console.log(JSON.stringify(result.data, null, 2));
-        return res.status(200).json(result.data);
+        return res.status(200).json(result.data.choices[0]);
     } catch (error) {
         const e: CustomError = error as CustomError;
         if (isCustomError(error as Error)) {
