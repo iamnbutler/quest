@@ -1,7 +1,8 @@
 import { useState } from "react";
 import * as prompts from "../prompt";
+import { ChatCompletionResponseMessage } from "openai";
 
-type Action = string
+type Action = string;
 
 interface ActionsProps {
     context: string;
@@ -9,13 +10,24 @@ interface ActionsProps {
     party_members: string;
 }
 
-export default function Actions({ context, actions, party_members }: ActionsProps) {
-    const [result, setResult] = useState<string | undefined>();
+export default function Actions({
+    context,
+    actions,
+    party_members,
+}: ActionsProps) {
+    const [result, setResult] = useState<ChatCompletionResponseMessage | undefined>();
 
-    async function onSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>, action: Action) {
+    async function onSubmit(
+        event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+        action: Action
+    ) {
         event.preventDefault();
 
-        const prompt = prompts.createDecisionPoint({ context, choice: action, party_members });
+        const prompt = prompts.createDecisionPoint({
+            context,
+            choice: action,
+            party_members,
+        });
 
         console.log(JSON.stringify(prompt, null, 2));
 
@@ -30,12 +42,15 @@ export default function Actions({ context, actions, party_members }: ActionsProp
 
             const data = await response.json();
             if (response.status !== 200) {
-                throw (data.error as string) || new Error(`Request failed with status ${response.status}`);
+                throw (
+                    (data.error as string) ||
+                    new Error(`Request failed with status ${response.status}`)
+                );
             }
 
             setResult(data.result);
 
-            console.log(JSON.stringify(data, null, 2))
+            console.log(JSON.stringify(data, null, 2));
         } catch (error) {
             console.error(error);
             throw (error as string) || new Error("Something went wrong");
@@ -53,7 +68,7 @@ export default function Actions({ context, actions, party_members }: ActionsProp
                     </li>
                 ))}
             </ol>
-            {result && <p>{result}</p>}
+            {result && <p>{result.content}</p>}
         </>
     );
 }
