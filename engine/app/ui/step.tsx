@@ -1,48 +1,94 @@
-const Header = ({ number, title, location }: Partial<StepMetadata>) => {
+'use client';
+
+import clsx from "clsx";
+import Tooltip from "./tooltip";
+import { useState } from "react";
+import Typewriter from "react-ts-typewriter";
+
+const Location = ({ location }: { location: LocationMetadata }) => {
     return (
-        <header className={'flex jutify-between'}>
-            <div className="flex gap-2">
-                <div>{number}</div>
-                {title && <div>{title}</div>}
+        <div className="inline-flex">
+            <Tooltip content={location.province.description}>
+                <div className="inline-flex cursor-help hover:text-white/80">{location.province.name}</div>
+            </Tooltip>
+            <span>,&nbsp;</span>
+            <Tooltip content={location.area.description}>
+                <div className="inline-flex cursor-help hover:text-white/80">{location.area.name}</div>
+            </Tooltip>
+        </div>
+    )
+}
+
+const Header = ({ id, location }: Partial<StepMetadata>) => {
+    return (
+        <header className={clsx('flex jutify-between text-xs flex-grow w-full text-white/50', 'py-2', 'border-y border-white/10')}>
+            <div className="flex gap-2 flex-grow">
+                {location && <Location location={location} />}
             </div>
-            <div className="flex">
-                {location && <div>{`${location.area}, ${location.province}`}</div>}
-                <div>...</div>
+            <div className="flex gap-2">
+                <div>{id}</div>
             </div>
         </header>
     )
 }
 
-type Province = 'Sylveria' | 'Calendria' | 'Kael' | 'Scepter Isle' | 'Darador' | 'Alderac' | 'Calladore' | 'Arcton';
-interface Location {
+type ProvinceName = 'Sylveria' | 'Calendria' | 'Kael' | 'Scepter Isle' | 'Darador' | 'Alderac' | 'Calladore' | 'Arcton';
+interface Province {
+    name: ProvinceName;
+    description: string;
+}
+
+interface Area {
+    name: string;
+    description: string;
+}
+
+interface LocationMetadata {
     province: Province;
-    area: string;
+    area: Area;
 }
 
 type QuestTitle = string;
 
 const EXAMPLE_STEP: StepMetadata = {
     location: {
-        province: 'Sylveria',
-        area: 'Haven\'s Crest'
+        province: {
+            name: 'Arcton',
+            description: `Arcton is a province bordering the mysterious kingdom of Drogath. Home to small towns like Sorrow's Reach, Willow's Bend, and Raven's Hollow, it fosters a strong sense of community. The provincial capital, Caelum's Crest, serves as a hub for commerce and politics.`
+        },
+        area: {
+            name: "Sorrow's Reach",
+            description: `Sorrow's Reach is a close-knit village in Arcton, surrounded by dense forests. Its residents, including farmers, blacksmiths, and weavers, live a non-magical life. Tensions arise due to Drogath's abundant magic use, but the village remains resilient.`
+        }
     },
-    number: 1,
-    title: 'Retrieve the Lost Relic',
-    summary: 'The king has tasked you with retrieving the lost relic from the ruins of the ancient temple. Be careful, the ruins are said to be cursed and guarded by powerful magic.'
+    id: '1.1.1',
+    title: '',
+    summary: ''
 }
 
 interface StepMetadata {
-    location: Location
-    number: number;
+    location: LocationMetadata
+    id: string;
     title: QuestTitle | null;
     summary: string;
 }
 
 export function Step() {
     const step = EXAMPLE_STEP;
-    const { number, title, location } = step;
+    const { id, title, location } = step;
+    const [showChoices, setShowChoices] = useState(false)
 
     return (
-        <Header number={number} title={title} location={location} />
+        <section>
+            <Header id={id} title={title} location={location} />
+            <Typewriter
+                text={'dfjaldkjsafldjdsklf afjdsajif daj ld asklf  djkflkjd as djaf dalkf'}
+                speed={8}
+                onFinished={() => {
+                    setShowChoices(true)
+                }}
+                cursor={showChoices ? false : true}
+            />
+        </section>
     )
 }

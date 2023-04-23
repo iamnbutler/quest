@@ -1,29 +1,29 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "The Fall of Atheria",
-  description: "A genrative text-based adventure game",
+    title: "The Fall of Atheria",
+    description: "A genrative text-based adventure game",
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body>
-        <main className="flex min-h-screen flex-col items-center justify-between p-24 font-mono text-sm">
-          <section className="w-[540px]">
-            <div
-              className={`prose prose-sm dark:prose-invert max-w-none prose-pre:leading-none prose-code:leading-none
+    return (
+        <html lang="en">
+            <body>
+                <main className="flex min-h-screen flex-col items-center justify-between p-24 font-mono text-sm">
+                    <section className="w-[540px]">
+                        <div
+                            className={`flex flex-col prose prose-sm dark:prose-invert max-w-none prose-pre:leading-none prose-code:leading-none
                         `}
-            >
-              {children}
-            </div>
-          </section>
-        </main>
-      </body>
-    </html>
-  );
+                        >
+                            {children}
+                        </div>
+                    </section>
+                </main>
+            </body>
+        </html>
+    );
 }
