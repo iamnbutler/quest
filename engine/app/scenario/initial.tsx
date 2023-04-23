@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from "react";
-import { decisionWithContext } from ".";
 import { ParsedResponseMessage } from "../game/action";
 import useMessageStore from "../stores/messages";
 
@@ -38,7 +37,7 @@ const initial_context = `
 
     The player is currently alone, until they meet up with another character.
 
-    The I below is the player character.
+    The I below is the player character. The player should never have knowledge of something that will happen after a decision, such as the things below.
 
     - if I choose to go to the market I will bump into Seraphina
     - if I choose to go to the tavern Elias will just have left, and we will need to go looking for him
@@ -52,19 +51,12 @@ const initial_decisions = [
     "Wander around town aimlessly",
 ];
 
-const initial_party_members = `
-- Player
-    - Apprentice to Master Rowan
-    - Friends: Elias, Layla, Seraphina
-    - Learns combat with Seraphina, Gareth
-    - Bond with Gareth like family`;
-
 const intial_text = `I'm supposed to meet Layla this afternoon at the library. She didn't say what for, but she said to there would be a surprise waiting. Elias also mentioned yesterday he would be at the Tavern, and to come by if I wanted to join him for a drink. I also heard there is a new merchant in town, so I might want to stop by the market to see what he has to offer.`;
 
-const InitialScenario = () => {
+export const initializeScenario = (): void => {
     const [stateInitialized, setStateInitialized] = useState(false)
     const initial_message: ParsedResponseMessage = {
-        originalMessage: intial_text,
+        originalMessage: initial_context,
         message: intial_text,
         choices: initial_decisions,
     }
@@ -74,14 +66,4 @@ const InitialScenario = () => {
         useMessageStore.setState({ responses: [initial_message], currentResponse: initial_message })
         setStateInitialized(true)
     }
-
-    const scenario = decisionWithContext({
-        text: intial_text,
-        context: initial_context,
-        party_members: initial_party_members,
-    })
-
-    return scenario
 }
-
-export default InitialScenario

@@ -14,18 +14,6 @@ export interface RequestParams {
     }
 }
 
-interface CustomError extends Error {
-    response?: {
-        status: number;
-        data: string;
-    };
-    message: string
-}
-
-function isCustomError(error: Error): error is CustomError {
-    return (error as CustomError).response !== undefined;
-}
-
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<CreateChatCompletionResponseChoicesInner>
@@ -41,12 +29,6 @@ export default async function handler(
         console.log(JSON.stringify(result.data, null, 2));
         return res.status(200).json(result.data.choices[0]);
     } catch (error) {
-        const e: CustomError = error as CustomError;
-        if (isCustomError(error as Error)) {
-            console.log(e.response!.status);
-            console.log(e.response!.data);
-        } else {
-            console.log(e.message);
-        }
+        console.log(error);
     }
 }

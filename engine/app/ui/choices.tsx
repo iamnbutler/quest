@@ -51,6 +51,10 @@ export default function Choices(props: ChoicesProps) {
         promptProperties.choice = updateChoice
         const prompt = createDecisionPoint(promptProperties)
 
+        if (isPicked) {
+            Scenario.createNewStep()
+        }
+
         return (
             <button type="button"
                 className={buttonStyle}

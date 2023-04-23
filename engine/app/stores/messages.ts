@@ -1,17 +1,21 @@
 import { create } from "zustand";
-import { ParsedResponseMessage } from "../game/action";
+import { ParsedResponse } from "../scenario/scenario";
 
-export interface Store {
-    responses: ParsedResponseMessage[];
-    currentResponse: ParsedResponseMessage | null;
-    setCurrentResponse: (response: ParsedResponseMessage) => void;
+export interface MessageStore {
+    responses: ParsedResponse[];
+    setResponses: (responses: ParsedResponse[]) => void;
+    currentResponse: ParsedResponse | null;
+    setCurrentResponse: (response: ParsedResponse) => void;
     resetCurrentResponse: () => void;
 }
 
-const useMessageStore = create<Store>((set) => ({
+const useMessageStore = create<MessageStore>((set) => ({
     responses: [],
+    setResponses: (responses: ParsedResponse[]) => {
+        set((state) => ({ ...state, responses }));
+    },
     currentResponse: null,
-    setCurrentResponse: (response: ParsedResponseMessage) => {
+    setCurrentResponse: (response: ParsedResponse) => {
         set((state) => ({
             ...state,
             currentResponse: response,

@@ -1,7 +1,8 @@
 import * as prompts from "../prompt";
 import { ChatCompletionResponseMessage } from "openai";
 import { Prompt } from "../prompt";
-import useMessageStore, { Store } from "../stores/messages";
+import useMessageStore, { MessageStore } from "../stores/messages";
+import useStatsStore, { StatsStore } from "../stores/stats";
 
 export interface ChoiceProps {
     context: string;
@@ -22,18 +23,34 @@ export interface ParsedResponseMessage {
 }
 
 class scenario {
+    createNewStep() {
+        useStatsStore.setState((state: StatsStore) => ({
+            ...state,
+            steps: state.steps + 1,
+        }));
+    }
+
     async getResponseMessage(prompt: Prompt) {
         const result = await this.getMessages(prompt);
 
         const parsedResponse = this.parseResponseMessage(result);
-        useMessageStore.setState((state: Store) => ({
+        useMessageStore.setState((state: MessageStore) => ({
             ...state,
             currentResponse: parsedResponse,
             responses: [...state.responses, parsedResponse],
         }));
     }
 
-    parseResponseMessage(message: ChatCompletionResponseMessage): ParsedResponseMessage {
+    private parseResponseMessage(message: ChatCompletionResponseMessage): ParsedResponseMessage {
+        if (!message || typeof message.content === 'undefined') {
+            console.log('Undefined message or missing content property');
+            return {
+                originalMessage: "",
+                message: "",
+                choices: [],
+            };
+        }
+
         const choiceDelimiter = /$$$(.*)/s;
         const match = message.content.match(choiceDelimiter);
 
