@@ -5,7 +5,7 @@ import Tooltip from "./tooltip";
 import { useState } from "react";
 import Typewriter from "react-ts-typewriter";
 import Choices from "./choices";
-import { UIMessage } from "../lib/openai";
+import { UIMessage } from "../stores/messages";
 
 const Location = ({ location }: { location: LocationMetadata }) => {
     return (
@@ -79,8 +79,8 @@ export function Step({ stepContent }: { stepContent: UIMessage }) {
 
     const { message, choices } = stepContent;
     const step = EXAMPLE_STEP;
-    const { id, title, location } = step;
-    const [showChoices, setShowChoices] = useState(true)
+    const { title, location } = step;
+    const [showChoices, setShowChoices] = useState(false)
 
     return (
         <section>
@@ -95,7 +95,9 @@ export function Step({ stepContent }: { stepContent: UIMessage }) {
                     cursor={showChoices ? false : true}
                 />
             </div>
-            <Choices choices={choices} />
+            <div className={showChoices ? '' : 'hidden'}>
+                <Choices choices={choices} />
+            </div>
             <footer className="border-b border-white/10"></footer>
         </section>
     )

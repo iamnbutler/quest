@@ -3,8 +3,9 @@ import { useState } from "react";
 import clsx from "clsx";
 import { slugify } from "@/app/lib/slugify"
 import { ThickArrowRightIcon } from "@radix-ui/react-icons";
-import { Choice, Prompt } from "../lib/openai";
+import { Prompt } from "../lib/openai";
 import { ChatCompletionResponseMessage } from "openai";
+import { Choice } from "../stores/messages";
 
 interface ChoiceProps {
     choice: Choice;
@@ -66,7 +67,8 @@ export default function Choices(props: ChoicesProps) {
                         isPicked ? "text-white" : "text-white/10"
                     )}
                 />
-                <span>{choice.id}</span>
+                <span className="opacity-60">{choice.id}.</span>
+                {' '}
                 <span>{choice.text}</span>
             </button>
         )

@@ -1,10 +1,5 @@
 import { ChatCompletionRequestMessage, ChatCompletionResponseMessage, Configuration, CreateChatCompletionResponse, OpenAIApi } from "openai";
-import { useMessagesStore, MessageData } from '@stores/messages';
-
-export type Choice = {
-    id: number;
-    text: string;
-};
+import { useMessagesStore, UIMessage, Choice } from '@stores/messages';
 
 export type ParsedChoicesResponse = {
     originalMessage: string;
@@ -12,14 +7,32 @@ export type ParsedChoicesResponse = {
     choices: Choice[];
 };
 
-export type UIMessage = {
-    message: MessageData;
-    choices: Choice[];
-};
-
 export const TEST_MESSAGE: ChatCompletionRequestMessage = {
     role: "user",
-    content: "In the land of Atheria, once a powerful and prosperous kingdom, ruin and despair now reign. Magic, the kingdom's former backbone, has dwindled into a scarce and dangerous resource. The arcane arts, previously revered, are now feared and strictly regulated by a royal guild known as the Silver Hand. Established by the king to investigate the cause of Atheria's downfall, the guild is determined to restore the kingdom to its former glory.",
+    content: `In the land of Atheria, once a powerful and prosperous kingdom, ruin and despair now reign. Magic, the kingdom's former backbone, has dwindled into a scarce and dangerous resource. The arcane arts, previously revered, are now feared and strictly regulated by a royal guild known as the Silver Hand. Established by the king to investigate the cause of Atheria's downfall, the guild is determined to restore the kingdom to its former glory.
+
+    You are a young paladin that has recently joined the Silver Hand. You have been tasked with investigating the mysterious disappearance of a young mage named Rowan You start your quest in the village of Sorrow's Reach.`,
+}
+
+export const TEST_UI_MESSAGE: UIMessage = {
+    message: {
+        content: TEST_MESSAGE.content,
+        step: 1,
+    },
+    choices: [
+        {
+            id: 1,
+            text: "Ask around about the missing mage",
+        },
+        {
+            id: 2,
+            text: "Visit the local tavern",
+        },
+        {
+            id: 3,
+            text: "Consult the journal the guild gave you",
+        },
+    ],
 }
 
 export class Prompt {
@@ -70,7 +83,8 @@ export class Prompt {
         return { originalMessage, updatedMessage, choices };
     }
 
-    async buildMessages(message: ChatCompletionRequestMessage): Promise<ChatCompletionResponseMessage | undefined> {
+    // Builds the prompt, sends it to OpenAI, and stores the response in the message store
+    async buildMessages(message: ChatCompletionRequestMessage) {
         const systemMessage = this.buildSystemMessage()
 
         const choicesInstructions = this.addChoicesInstructions()
@@ -89,7 +103,27 @@ export class Prompt {
         const completion = await this.getChatCompletion(messages)
         const returnMessages = completion.choices[0].message
 
-        return returnMessages
+        if (returnMessages) {
+            this.storeMessage(returnMessages)
+        } else {
+            throw new Error("Couldn't store message, No response from OpenAI")
+        }
+    }
+
+    storeMessage(message: ChatCompletionResponseMessage): void {
+        const parsedMessage = this.parsedChoices(message);
+
+        const currentMessage = useMessagesStore.getState().currentMessage;
+
+        const messageData: UIMessage = {
+            message: {
+                content: parsedMessage.updatedMessage,
+                step: currentMessage.message.step + 1,
+            },
+            choices: parsedMessage.choices,
+        }
+
+        useMessagesStore.getState().addMessage(messageData)
     }
 
     private async getChatCompletion(
@@ -133,28 +167,5 @@ export class Prompt {
 
             throw error;
         }
-    }
-
-    async useMessages(messages: ChatCompletionResponseMessage[]): Promise<UIMessage> {
-        const response = await this.getChatCompletion(messages)
-        const message = response.choices[0].message
-
-        const parsedMessage = this.parsedChoices(message);
-
-        const currentMessage = useMessagesStore.getState().currentMessage;
-
-        const messageData = {
-            content: parsedMessage.updatedMessage,
-            step: currentMessage.step + 1,
-        }
-
-        useMessagesStore.getState().addMessage(messageData)
-
-        const uiMessage: UIMessage = {
-            message: messageData,
-            choices: parsedMessage.choices,
-        }
-
-        return uiMessage
     }
 }

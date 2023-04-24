@@ -1,37 +1,64 @@
 import { create } from "zustand";
 
-const INITIAL_MESSAGE: MessageData = {
-    content: `You walk with your friends Layla, Elias, and Seraphina through the streets of the village on your way to the smith. The sun is high in the sky, and the air is warm and pleasant.
+const INITIAL_MESSAGE: UIMessage = {
+    message: {
+        content:
+            `In the land of Atheria, once a powerful and prosperous kingdom, ruin and despair now reign. Magic, the kingdom's former backbone, has dwindled into a scarce and dangerous resource. The arcane arts, previously revered, are now feared and strictly regulated by a royal guild known as the Silver Hand. Established by the king to investigate the cause of Atheria's downfall, the guild is determined to restore the kingdom to its former glory.
 
-Layla's eyes glimmer with excitement as she mentions her plans for the day. "I've heard rumors of an old abandoned manor on the edge of town. I've had my eye on it for a while. I'm sure there is a wealth of knowledge hidden within its walls. Maybe literally. I'm planning to explore it today, and I'd love for you all to join me."`,
-    step: 1
-}
+You are a young paladin that has recently joined the Silver Hand. You have been tasked with investigating the mysterious disappearance of a young mage named Rowan You start your quest in the village of Sorrow's Reach.`,
+        step: 1
+    },
+    choices: [
+        {
+            id: 1,
+            text: "Ask around about the missing mage",
+        },
+        {
+            id: 2,
+            text: "Visit the local tavern",
+        },
+        {
+            id: 3,
+            text: "Consult the journal the guild gave you",
+        },
+    ],
+};
 
-export interface MessageData {
+export type Choice = {
+    id: number;
+    text: string;
+};
+
+export type MessageData = {
     content: string;
     step: number;
-}
+};
 
-export interface MessagesStore {
-    messages: MessageData[];
-    addMessage: (message: MessageData) => void;
-    currentMessage: MessageData;
-    setCurrentMessage: (message: MessageData) => void;
-}
+export type UIMessage = {
+    message: MessageData;
+    choices: Choice[];
+};
+
+export type MessagesStore = {
+    messages: UIMessage[];
+    addMessage: (message: UIMessage) => void;
+    currentMessage: UIMessage;
+    setCurrentMessage: (message: UIMessage) => void;
+};
 
 export const useMessagesStore = create<MessagesStore>((set) => ({
     messages: [INITIAL_MESSAGE],
-    addMessage: (message: MessageData) => {
+    addMessage: (message: UIMessage) => {
         set((state) => ({
             ...state,
-            messages: [...state.messages, message]
+            messages: [...state.messages, message],
         }));
     },
     currentMessage: INITIAL_MESSAGE,
-    setCurrentMessage: (message: MessageData) => {
+    setCurrentMessage: (message: UIMessage) => {
         set((state) => ({
             ...state,
-            currentMessage: state.messages[state.messages.length - 1]
+            currentMessage: message,
         }));
-    }
+    },
 }));
