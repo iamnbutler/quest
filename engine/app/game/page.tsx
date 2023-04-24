@@ -1,10 +1,10 @@
+'use client';
 import { Step } from "../ui/step";
 import { useMessagesStore } from "../stores/messages";
 import { slugify } from "../lib/slugify";
 
 function Home() {
-    const messages = useMessagesStore.getState().messages;
-
+    const messages = useMessagesStore((state) => state.messages);
     return (
         <div className="flex flex-col gap-4">
             {messages.map(message => (

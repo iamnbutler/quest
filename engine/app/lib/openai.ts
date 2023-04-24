@@ -44,8 +44,12 @@ export class Prompt {
         }
     }
 
+    private addFormattingInstructions(): string {
+        return `In your reply, add a new line character at the end of each paragraph.`
+    }
+
     private addChoicesInstructions(): string {
-        return `At the end of the prompt, add a list of choices for the user to choose from. Each choice should be on a new line and start with a number. Wrap the list of decisions in this special delimiter: :::===::: For example:
+        return `At the end of the prompt, add a list of choices for the user to choose from. Provide 2-4 choices. Each choice should be on a new line and start with a number. Wrap the list of decisions in this special delimiter: :::===::: For example:
 :::===:::
 1. Go to the store
 2. Go to the park
@@ -87,9 +91,13 @@ export class Prompt {
     async buildMessages(message: ChatCompletionRequestMessage) {
         const systemMessage = this.buildSystemMessage()
 
+        const formattingInstructions = this.addFormattingInstructions()
+
         const choicesInstructions = this.addChoicesInstructions()
 
         const finalMessageContent = `${message.content}
+
+            ${formattingInstructions}
 
             ${choicesInstructions}`
 
@@ -131,8 +139,10 @@ export class Prompt {
     ): Promise<CreateChatCompletionResponse> {
         try {
             const configuration = new Configuration({
-                apiKey: process.env.OPENAI_API_KEY,
+                apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
             });
+
+            console.log(JSON.stringify(configuration, null, 2))
 
             if (!configuration.apiKey) {
                 throw new Error("No OpenAI API key found");
