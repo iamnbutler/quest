@@ -4,6 +4,7 @@ import clsx from "clsx";
 import Tooltip from "./tooltip";
 import { useState } from "react";
 import Typewriter from "react-ts-typewriter";
+import { ChatCompletionResponseMessage } from "openai";
 
 const Location = ({ location }: { location: LocationMetadata }) => {
     return (
@@ -73,7 +74,7 @@ interface StepMetadata {
     summary: string;
 }
 
-export function Step() {
+export function Step({ message }: { message: ChatCompletionResponseMessage | undefined }) {
     const step = EXAMPLE_STEP;
     const { id, title, location } = step;
     const [showChoices, setShowChoices] = useState(false)
@@ -82,14 +83,16 @@ export function Step() {
         <section>
             <Header id={id} title={title} location={location} />
             <div className="my-2">
-                <Typewriter
-                    text={`I'm supposed to meet Layla this afternoon at the library. She didn't say what for, but she said to there would be a surprise waiting. Elias also mentioned yesterday he would be at the Tavern, and to come by if I wanted to join him for a drink. I also heard there is a new merchant in town, so I might want to stop by the market to see what he has to offer.`}
-                    speed={8}
-                    onFinished={() => {
-                        setShowChoices(true)
-                    }}
-                    cursor={showChoices ? false : true}
-                />
+                {message &&
+                    <Typewriter
+                        text={message.content}
+                        speed={8}
+                        onFinished={() => {
+                            setShowChoices(true)
+                        }}
+                        cursor={showChoices ? false : true}
+                    />
+                }
             </div>
             <footer className="border-b border-white/10"></footer>
         </section>

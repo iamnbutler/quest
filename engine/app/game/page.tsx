@@ -1,10 +1,13 @@
-'use client';
-
+import { Prompt, TEST_MESSAGE } from "../lib/openai";
 import { Step } from "../ui/step";
 
-function Home() {
+async function Home() {
+    const prompt = new Prompt();
+
+    const message = await prompt.buildMessages(TEST_MESSAGE)
+
     return (
-        <Step />
+        <Step message={message} />
     );
 }
 
