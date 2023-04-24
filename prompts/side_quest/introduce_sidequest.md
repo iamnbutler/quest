@@ -22,6 +22,8 @@ Example:
 - You find a book that contains information on a spell none of your party memebers know or can read. You can try to dangerously learn the spell or find someone who can teach it to you.
 - You find something that looks out of place. You can investigate it to see if there are any hidden secrets.
 
+It is important to note that dialog, interactions, quest outcomes and relationships don't have to be happy or positive. In a fantasy world people get hurt, bad things happen, and people's quality of life isn't always good.
+
 Consider your current {Party}. Is there something one of your party members wants to do? Is there a skill or ability they want to learn? Is there a character they want talk to? Is there a location they want to visit? Is there someone they want to improve their relationship with?
 
 Example:

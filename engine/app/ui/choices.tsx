@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { BuildPromptProperties, createDecisionPoint } from "../prompt";
 import clsx from "clsx";
-import { scenario } from "../game/action";
 import { slugify } from "@/app/lib/slugify"
 import { ThickArrowRightIcon } from "@radix-ui/react-icons";
 

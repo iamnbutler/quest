@@ -45,3 +45,16 @@
 
 
 I'm supposed to meet Layla this afternoon at the library. She didn't say what for, but she said to there would be a surprise waiting. Elias also mentioned yesterday he would be at the Tavern, and to come by if I wanted to join him for a drink. I also heard there is a new merchant in town, so I might want to stop by the market to see what he has to offer.
+
+
+---
+
+You are riding back from a hunt with your party, Layla, Elias, and Seraphina. On your way back, you discovered a camp of bandits that had been hiding out in the hills, and managed to ambush and scatter them. However, Layla and Elias were injured during the skirmish, Elias more severely than Layla.
+
+Suddenly, a hooded figure emerges from the shadows of the trees, observing your party with curiosity. "You have done a great service by defeating these bandits," the figure says. "But their leader still roams free, causing harm to innocent people."
+
+Layla, wincing from her injuries, responds, "And who are you? Why should we trust you?"
+
+The hooded figure pulls back their hood, revealing a weathered face with steely eyes. "My name is Aldric, and I am a former victim of their leader. I have been tracking him for months, seeking justice. If you help me, I promise to share the knowledge I have collected on the bandit leader's whereabouts and weaknesses."
+
+Seraphina glances at the injured Elias and Layla. "We have our own troubles to tend to, Aldric. Elias needs to recover from his injuries, and we have a long journey ahead."
