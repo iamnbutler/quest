@@ -2,7 +2,7 @@
 import { useState } from "react";
 import clsx from "clsx";
 import { slugify } from "@/app/lib/slugify"
-import { ThickArrowRightIcon } from "@radix-ui/react-icons";
+import { ThickArrowLeftIcon, ThickArrowRightIcon } from "@radix-ui/react-icons";
 import { Prompt } from "../lib/openai";
 import { ChatCompletionResponseMessage } from "openai";
 import { Choice } from "../stores/messages";
@@ -43,7 +43,8 @@ export default function Choices(props: ChoicesProps) {
             'border border-transparent px-2 py-1 text-sm',
             // Sets the text to be the same height as the icon
             'text-iconHeight',
-            'flex items-center gap-2'
+            'flex items-center gap-2',
+            'relative group'
         )
 
         const choiceMessage: ChatCompletionResponseMessage = {
@@ -64,12 +65,14 @@ export default function Choices(props: ChoicesProps) {
             >
                 <ThickArrowRightIcon
                     className={clsx(
-                        isPicked ? "text-white" : "text-white/10"
+                        'absolute -left-6',
+                        isPicked ? "text-white" : "text-white/0 group-hover:text-white/70"
                     )}
                 />
-                <span className="opacity-60">{choice.id}.</span>
+                <span>{choice.id}.</span>
                 {' '}
                 <span>{choice.text}</span>
+                {' '}
             </button>
         )
     }
