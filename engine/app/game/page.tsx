@@ -1,27 +1,15 @@
-'use client';
-
-import { Suspense } from "react";
 import { Step } from "../ui/step";
 import { useMessagesStore } from "../stores/messages";
+import { slugify } from "../lib/slugify";
 
 function Home() {
-    // const prompt = new Prompt();
-
-    // const message = await prompt.buildMessages(TEST_MESSAGE)
-
-    // if (!message) {
-    //     throw new Error("No message");
-    // }
-
-    // const content = await prompt.useMessages([message]);
-
-    const initialStepMessage = useMessagesStore(state => state.currentMessage);
+    const messages = useMessagesStore.getState().messages;
 
     return (
         <div className="flex flex-col gap-4">
-            <Suspense fallback={<div>Loading...</div>}>
-                <Step stepContent={initialStepMessage} />
-            </Suspense>
+            {messages.map(message => (
+                <Step key={slugify(message.choices[0].text)} stepContent={message} />
+            ))}
         </div>
     );
 }
