@@ -4,7 +4,8 @@ import clsx from "clsx";
 import Tooltip from "./tooltip";
 import { useState } from "react";
 import Typewriter from "react-ts-typewriter";
-import { ChatCompletionResponseMessage } from "openai";
+import Choices from "./choices";
+import { UIMessage } from "../lib/openai";
 
 const Location = ({ location }: { location: LocationMetadata }) => {
     return (
@@ -62,38 +63,39 @@ const EXAMPLE_STEP: StepMetadata = {
             description: `Sorrow's Reach is a close-knit village in Arcton, surrounded by dense forests. Its residents, including farmers, blacksmiths, and weavers, live a non-magical life. Tensions arise due to Drogath's abundant magic use, but the village remains resilient.`
         }
     },
-    id: '1.1.1',
+    id: 1,
     title: '',
     summary: ''
 }
 
 interface StepMetadata {
     location: LocationMetadata
-    id: string;
+    id: number;
     title: QuestTitle | null;
     summary: string;
 }
 
-export function Step({ message }: { message: ChatCompletionResponseMessage | undefined }) {
+export function Step({ stepContent }: { stepContent: UIMessage }) {
+
+    const { message, choices } = stepContent;
     const step = EXAMPLE_STEP;
     const { id, title, location } = step;
-    const [showChoices, setShowChoices] = useState(false)
+    const [showChoices, setShowChoices] = useState(true)
 
     return (
         <section>
-            <Header id={id} title={title} location={location} />
+            <Header id={message.step} title={title} location={location} />
             <div className="my-2">
-                {message &&
-                    <Typewriter
-                        text={message.content}
-                        speed={8}
-                        onFinished={() => {
-                            setShowChoices(true)
-                        }}
-                        cursor={showChoices ? false : true}
-                    />
-                }
+                <Typewriter
+                    text={message.content}
+                    speed={8}
+                    onFinished={() => {
+                        setShowChoices(true)
+                    }}
+                    cursor={showChoices ? false : true}
+                />
             </div>
+            <Choices choices={choices} />
             <footer className="border-b border-white/10"></footer>
         </section>
     )

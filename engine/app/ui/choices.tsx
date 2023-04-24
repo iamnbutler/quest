@@ -1,37 +1,36 @@
 'use client'
 import { useState } from "react";
-import { BuildPromptProperties, createDecisionPoint } from "../prompt";
 import clsx from "clsx";
 import { slugify } from "@/app/lib/slugify"
 import { ThickArrowRightIcon } from "@radix-ui/react-icons";
+import { Choice, Prompt } from "../lib/openai";
+import { ChatCompletionResponseMessage } from "openai";
 
 interface ChoiceProps {
-    promptProperties: BuildPromptProperties;
-    choice: string;
+    choice: Choice;
     onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     picked: string;
     disable: boolean;
 }
 
 interface ChoicesProps {
-    promptProperties: BuildPromptProperties;
-    choices: string[];
+    choices: Choice[];
 }
 
 export default function Choices(props: ChoicesProps) {
-    const Scenario = new scenario()
     const [choicePicked, setChoicePicked] = useState('');
     const [choicesComplete, setChoicesComplete] = useState(false);
 
-    const { promptProperties, choices } = props;
+    const prompt = new Prompt()
+
+    const { choices } = props;
 
     const Choice = ({
-        promptProperties,
         choice,
         picked,
         disable,
     }: ChoiceProps) => {
-        const slug = slugify(choice);
+        const slug = slugify(choice.text);
         const isPicked = picked === slug;
 
         const buttonStyle = clsx(
@@ -46,12 +45,9 @@ export default function Choices(props: ChoicesProps) {
             'flex items-center gap-2'
         )
 
-        const updateChoice = choice
-        promptProperties.choice = updateChoice
-        const prompt = createDecisionPoint(promptProperties)
-
-        if (isPicked) {
-            Scenario.createNewStep()
+        const choiceMessage: ChatCompletionResponseMessage = {
+            role: "user",
+            content: `User's choice: ${choice}`,
         }
 
         return (
@@ -59,7 +55,7 @@ export default function Choices(props: ChoicesProps) {
                 className={buttonStyle}
                 onClick={(event) => {
                     event.preventDefault();
-                    Scenario.getResponseMessage(prompt);
+                    prompt.buildMessages(choiceMessage)
                     setChoicePicked(slug);
                     setChoicesComplete(true);
                 }}
@@ -70,7 +66,8 @@ export default function Choices(props: ChoicesProps) {
                         isPicked ? "text-white" : "text-white/10"
                     )}
                 />
-                <span>{choice}</span>
+                <span>{choice.id}</span>
+                <span>{choice.text}</span>
             </button>
         )
     }
@@ -80,7 +77,6 @@ export default function Choices(props: ChoicesProps) {
             {choices.map((choice, ix) => (
                 <Choice
                     key={ix}
-                    promptProperties={promptProperties}
                     choice={choice}
                     picked={choicePicked}
                     disable={choicesComplete}
