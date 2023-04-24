@@ -54,7 +54,9 @@ export class Prompt {
 1. Go to the store
 2. Go to the park
 3. Go to the library
-:::===:::`
+:::===:::
+
+The last line of every message you send should be the delimiter. Always send the delimiter.`
     }
 
     private parsedChoices(response: ChatCompletionResponseMessage | undefined): ParsedChoicesResponse {
