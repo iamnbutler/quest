@@ -80,21 +80,21 @@ export function Step({ stepContent }: { stepContent: UIMessage }) {
     const { message, choices } = stepContent;
     const step = EXAMPLE_STEP;
     const { title, location } = step;
-    const [showChoices, setShowChoices] = useState(true)
+    const [showChoices, setShowChoices] = useState(false)
 
     return (
         <section>
             <Header id={message.step} title={title} location={location} />
             <div className="my-2">
-                {/* <Typewriter
+                <Typewriter
                     text={message.content}
                     speed={8}
                     onFinished={() => {
                         setShowChoices(true)
                     }}
                     cursor={showChoices ? false : true}
-                /> */}
-                <p>{message.content}</p>
+                />
+                {/* <p>{message.content}</p> */}
             </div>
             <div className={showChoices ? '' : 'hidden'}>
                 <Choices choices={choices} />

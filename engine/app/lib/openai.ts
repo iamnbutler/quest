@@ -45,19 +45,14 @@ export class Prompt {
     }
 
     private addFormattingInstructions(): string {
-        return `In your reply, add a new line character at the end of each paragraph.`
-    }
+        return `Based on the current situation in the story, continue the story for about 140 characeters, then provide 2-5 questions or actions the player can choose from to continue the story. List the options with numbers, followed by a colon, and then the option text.
 
-    private addChoicesInstructions(): string {
-        return `At the end of the prompt, add a list of choices for the user to choose from. Provide 2-4 choices. Each choice should be on a new line and start with a number. Wrap the list of decisions in this special delimiter: :::===::: For example:
-:::===:::
-1. Go to the store
-2. Go to the park
-3. Go to the library
-:::===:::
+1: Foo
+2: Bar
+3: Baz
+...
 
-The last line of every message you send should be the delimiter. Always send the delimiter.`
-    }
+In your reply, add a new line character at the end of each paragraph.`}
 
     private parsedChoices(response: ChatCompletionResponseMessage | undefined): ParsedChoicesResponse {
         if (response === undefined) {
@@ -66,23 +61,20 @@ The last line of every message you send should be the delimiter. Always send the
 
         const message = response.content;
 
-        const delimiter = ":::===:::";
-        const choicesRegex = new RegExp(`${delimiter}([\\s\\S]*?)${delimiter}`);
+        const choicesRegex = new RegExp('\\d:\\s*(.*?)\\s*(?=\\n|$)', 'g');
 
-        const match = message.match(choicesRegex);
+        const matches = Array.from(message.matchAll(choicesRegex));
 
-        if (!match) {
+        if (matches.length === 0) {
             return { originalMessage: message, updatedMessage: message, choices: [] };
         }
 
         const originalMessage = message;
-        const updatedMessage = message.replace(match[0], "").trim();
-        const choicesText = match[1].trim();
-        const choicesLines = choicesText.split("\n");
+        const updatedMessage = message.replace(choicesRegex, "").trim();
 
-        const choices = choicesLines.map((line, index) => {
+        const choices = matches.map((match, index) => {
             const id = index + 1;
-            const text = line.replace(/^\d+\.\s*/, "");
+            const text = match[1];
             return { id, text };
         });
 
@@ -95,13 +87,9 @@ The last line of every message you send should be the delimiter. Always send the
 
         const formattingInstructions = this.addFormattingInstructions()
 
-        const choicesInstructions = this.addChoicesInstructions()
+        const finalMessageContent = `${formattingInstructions}
 
-        const finalMessageContent = `${message.content}
-
-            ${formattingInstructions}
-
-            ${choicesInstructions}`
+            ${message.content}`
 
         message.content = finalMessageContent
 
