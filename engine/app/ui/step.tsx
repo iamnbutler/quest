@@ -2,10 +2,10 @@
 
 import clsx from "clsx";
 import Tooltip from "./tooltip";
-import { useState } from "react";
-import Typewriter from "react-ts-typewriter";
+import { useEffect, useMemo, useState } from "react";
 import Choices from "./choices";
 import { UIMessage } from "../stores/messages";
+import Questwriter from "../lib/questwriter";
 
 const Location = ({ location }: { location: LocationMetadata }) => {
     return (
@@ -69,37 +69,66 @@ const EXAMPLE_STEP: StepMetadata = {
 }
 
 interface StepMetadata {
-    location: LocationMetadata
+    location: LocationMetadata;
     id: number;
     title: QuestTitle | null;
     summary: string;
 }
 
-export function Step({ stepContent }: { stepContent: UIMessage }) {
+interface StepMetadata {
+    location: LocationMetadata;
+    id: number;
+    title: QuestTitle | null;
+    summary: string;
+}
 
+export function Step({
+    stepContent,
+}: {
+    stepContent: UIMessage;
+    index: number;
+}) {
     const { message, choices } = stepContent;
     const step = EXAMPLE_STEP;
     const { title, location } = step;
-    const [showChoices, setShowChoices] = useState(false)
+    const [showChoices, setShowChoices] = useState(false);
+    const [showIndex, setShowIndex] = useState(0);
+
+    const handleTypewriterFinish = () => {
+        if (showIndex === message.content.length - 1) {
+            setShowChoices(true);
+        } else {
+            setShowIndex((prevIndex) => prevIndex + 1);
+        }
+    };
+
+    useEffect(() => {
+        setShowIndex(0);
+    }, [message.content]);
+
+    const questwriters = useMemo(
+        () =>
+            message.content.map((text, index) => (
+                <Questwriter
+                    key={index}
+                    text={text}
+                    speed={8}
+                    onFinished={() => handleTypewriterFinish()}
+                    play={index === showIndex}
+                />
+            )),
+        [message.content, showIndex]
+    );
 
     return (
         <section>
             <Header id={message.step} title={title} location={location} />
-            <div className="my-2">
-                <Typewriter
-                    text={message.content}
-                    speed={8}
-                    onFinished={() => {
-                        setShowChoices(true)
-                    }}
-                    cursor={showChoices ? false : true}
-                />
-                {/* <p>{message.content}</p> */}
-            </div>
-            <div className={showChoices ? '' : 'hidden'}>
-                <Choices choices={choices} />
-            </div>
-            <footer className="border-b border-white/10"></footer>
+            <div className="mt-6 mb-7 flex flex-col gap-4">{questwriters}</div>
+            <footer className="mt-1 border-t border-white/10">
+                <div className={showChoices ? "" : "hidden"}>
+                    <Choices choices={choices} />
+                </div>
+            </footer>
         </section>
-    )
+    );
 }

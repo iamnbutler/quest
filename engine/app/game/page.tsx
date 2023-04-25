@@ -9,7 +9,7 @@ function Home() {
         <div className="flex flex-col gap-4">
             {messages.map((message, ix) => (
                 <Suspense fallback={<div>Loading...</div>} key={`${ix}-step`}>
-                    <Step stepContent={message} />
+                    <Step index={ix} stepContent={message} />
                 </Suspense>))}
         </div>
     );

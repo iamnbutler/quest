@@ -46,7 +46,7 @@ export default function Choices(props: ChoicesProps) {
 
         const buttonStyle = clsx(
             isPicked
-                ? "border-white/80"
+                ? "border-white/20"
                 : disable
                     ? "text-white/50 cursor-not-allowed"
                     : "text-white hover:border-white/40 cursor-pointer",
@@ -92,7 +92,7 @@ export default function Choices(props: ChoicesProps) {
     }
 
     return (
-        <ol className="my-4 p-0 -ml-2 not-prose flex flex-col">
+        <ol className="my-6 p-0 -ml-2 not-prose flex flex-col">
             {choices
                 ? choices.map((choice, ix) => (
                     <Choice
