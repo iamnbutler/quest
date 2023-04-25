@@ -3,7 +3,7 @@ import { useState } from "react";
 import clsx from "clsx";
 import { slugify } from "@/app/lib/slugify"
 import { ThickArrowRightIcon } from "@radix-ui/react-icons";
-import { Prompt } from "../lib/openai";
+import * as prompt from "../lib/openai";
 import { ChatCompletionResponseMessage } from "openai";
 import { Choice } from "../stores/messages";
 
@@ -22,19 +22,7 @@ export default function Choices(props: ChoicesProps) {
     const [choicePicked, setChoicePicked] = useState('');
     const [choicesComplete, setChoicesComplete] = useState(false);
 
-    const prompt = new Prompt()
-
     const { choices } = props;
-
-    const retryMessageText: ChatCompletionResponseMessage = {
-        role: "user",
-        content: `I didn't get the choices. Can you repeat them?`,
-    }
-
-    const retryMessage = () => {
-        prompt.buildMessages(retryMessageText)
-        setChoicesComplete(false);
-    }
 
     const Choice = ({
         choice,
@@ -94,7 +82,7 @@ export default function Choices(props: ChoicesProps) {
     return (
         <ol className="my-6 p-0 -ml-2 not-prose flex flex-col">
             {choices
-                ? choices.map((choice, ix) => (
+                && choices.map((choice, ix) => (
                     <Choice
                         key={ix}
                         choice={choice}
@@ -103,12 +91,6 @@ export default function Choices(props: ChoicesProps) {
                         onClick={() => { }}
                     />
                 ))
-                : <Choice
-                    choice={{ id: 1, text: "I didn't get the choices. Can you repeat them?" }}
-                    picked={choicePicked}
-                    disable={choicesComplete}
-                    onClick={retryMessage}
-                />
             }
         </ol>
     );
