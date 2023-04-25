@@ -26,6 +26,16 @@ export default function Choices(props: ChoicesProps) {
 
     const { choices } = props;
 
+    const retryMessageText: ChatCompletionResponseMessage = {
+        role: "user",
+        content: `I didn't get the choices. Can you repeat them?`,
+    }
+
+    const retryMessage = () => {
+        prompt.buildMessages(retryMessageText)
+        setChoicesComplete(false);
+    }
+
     const Choice = ({
         choice,
         picked,
@@ -56,17 +66,21 @@ export default function Choices(props: ChoicesProps) {
             <button type="button"
                 className={buttonStyle}
                 onClick={(event) => {
-                    event.preventDefault();
                     prompt.buildMessages(choiceMessage)
                     setChoicePicked(slug);
                     setChoicesComplete(true);
+                    event.preventDefault();
                 }}
                 disabled={disable}
             >
                 <ThickArrowRightIcon
                     className={clsx(
                         'absolute -left-6',
-                        isPicked ? "text-white" : "text-white/0 group-hover:text-white/70"
+                        isPicked
+                            ? "text-white"
+                            : disable
+                                ? "text-white/0"
+                                : "text-white/0 group-hover:text-white/70"
                     )}
                 />
                 <span>{choice.id}.</span>
@@ -79,15 +93,23 @@ export default function Choices(props: ChoicesProps) {
 
     return (
         <ol className="my-4 p-0 -ml-2 not-prose flex flex-col">
-            {choices.map((choice, ix) => (
-                <Choice
-                    key={ix}
-                    choice={choice}
+            {choices
+                ? choices.map((choice, ix) => (
+                    <Choice
+                        key={ix}
+                        choice={choice}
+                        picked={choicePicked}
+                        disable={choicesComplete}
+                        onClick={() => { }}
+                    />
+                ))
+                : <Choice
+                    choice={{ id: 1, text: "I didn't get the choices. Can you repeat them?" }}
                     picked={choicePicked}
                     disable={choicesComplete}
-                    onClick={() => { }}
+                    onClick={retryMessage}
                 />
-            ))}
+            }
         </ol>
     );
 }
