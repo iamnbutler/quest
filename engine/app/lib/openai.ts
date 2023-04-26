@@ -6,6 +6,7 @@ import {
     OpenAIApi,
 } from "openai";
 import { useMessagesStore, UIMessage, Choice } from "@stores/messages";
+import { Party, formatCharacterAsString } from "../stores/party";
 
 export type ParsedChoicesResponse = {
     originalMessage: string;
@@ -20,17 +21,31 @@ function buildSystemMessage(): ChatCompletionRequestMessage {
     };
 }
 
-async function buildMessages(message: ChatCompletionRequestMessage, previousMessage: UIMessage) {
+async function buildMessages(message: ChatCompletionRequestMessage, previousMessages: UIMessage[], party: Party) {
     const systemMessage = buildSystemMessage();
+
+    const previousMessagesString = previousMessages
+        .map((previousMessage) => previousMessage.message.content.join("\n"))
+        .join("\n");
 
     const previousMessageContext = `
       For your reference, here is the most recent part of the story:
 
-      ${previousMessage.message.content.join("\n")}`;
+      4{}
+
+      ${previousMessagesString}`;
+
+    const currentParty = `
+        This is the current party. Use it to help you understand the characters, how they think, how they would respond, and the way they would respond to each other.
+
+        ${party.map(partyMember => formatCharacterAsString(partyMember)).join("\n")}
+    `
 
     const finalMessageContent = `${formattingInstructions}
 
   ${previousMessageContext}
+
+  ${currentParty}
 
   ${message.content}`;
 

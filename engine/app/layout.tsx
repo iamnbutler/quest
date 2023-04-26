@@ -2,11 +2,11 @@ import Debug from "./debug";
 import "./globals.css";
 
 export const metadata = {
-    title: "The Fall of Atheria",
+    title: "Adventure",
     description: "A genrative text-based adventure game",
 };
 
-const ENABLE_DEBUG = true;
+const ENABLE_DEBUG = false;
 
 export default function RootLayout({
     children,

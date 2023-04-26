@@ -5,6 +5,7 @@ import Tooltip from "./tooltip";
 import { useEffect, useState } from "react";
 import Choices from "./choices";
 import { UIMessage, useMessagesStore } from "../stores/messages";
+import { nanoid } from "nanoid";
 
 const Location = ({ location }: { location: LocationMetadata }) => {
     return (
@@ -90,18 +91,18 @@ export function Step({
     const { message, choices } = stepContent;
     const step = EXAMPLE_STEP;
     const { title, location } = step;
-    const previousMessage = useMessagesStore((state) => state.currentMessage);
+    const previousMessages = useMessagesStore((state) => state.messages.slice(-4));
 
     return (
         <section>
             <Header id={message.step} title={title} location={location} />
             <div className="mt-6 mb-7 flex flex-col gap-4">
                 {message.content.map((text) => (
-                    <div>{text}</div>
+                    <div key={nanoid()}>{text}</div>
                 ))}
             </div>
             <footer className="mt-1 border-t border-white/10">
-                <Choices choices={choices} previousMessage={previousMessage} />
+                <Choices choices={choices} previousMessages={previousMessages} />
             </footer>
         </section>
     );

@@ -6,6 +6,7 @@ import { ThickArrowRightIcon } from "@radix-ui/react-icons";
 import * as prompt from "../lib/openai";
 import { ChatCompletionResponseMessage } from "openai";
 import { Choice, UIMessage } from "../stores/messages";
+import usePartyStore from "../stores/party";
 
 interface ChoiceProps {
     choice: Choice;
@@ -16,14 +17,14 @@ interface ChoiceProps {
 
 interface ChoicesProps {
     choices: Choice[];
-    previousMessage: UIMessage;
+    previousMessages: UIMessage[];
 }
 
 export default function Choices(props: ChoicesProps) {
     const [choicePicked, setChoicePicked] = useState('');
     const [choicesComplete, setChoicesComplete] = useState(false);
 
-    const { choices, previousMessage } = props;
+    const { choices, previousMessages } = props;
 
     const Choice = ({
         choice,
@@ -51,11 +52,13 @@ export default function Choices(props: ChoicesProps) {
             content: `User's choice: ${choice.text}`,
         }
 
+        const currentParty = usePartyStore(state => state.party);
+
         return (
             <button type="button"
                 className={buttonStyle}
                 onClick={(event) => {
-                    prompt.buildMessages(choiceMessage, previousMessage);
+                    prompt.buildMessages(choiceMessage, previousMessages, currentParty);
                     setChoicePicked(slug);
                     setChoicesComplete(true);
                     event.preventDefault();
