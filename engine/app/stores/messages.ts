@@ -3,23 +3,33 @@ import { create } from "zustand";
 const INITIAL_MESSAGE: UIMessage = {
     message: {
         content: [
-            "In the land of Atheria, once a powerful and prosperous kingdom, ruin and despair now reign.", "Magic, the kingdom's former backbone, has dwindled into a scarce and dangerous resource. The arcane arts, previously revered, are now feared and strictly regulated by a royal guild known as the Silver Hand.", "Established by the king to investigate the cause of Atheria's downfall, the guild is determined to restore the kingdom to its former glory.",
-            "You are a young paladin that has recently joined the Silver Hand. You have been tasked with investigating the mysterious disappearance of a young mage named Rowan.", "You start your quest in the village of Sorrow's Reach."
+            "You are Seraphina, a young mage in your second year at the Mage's Guild. Your family worked hard to get you into the guild, and you are determined to make them proud. You have always excelled at the phsyical, like combat training and sports, but magic didn't come as freely.",
+            "Recently you started meeting up with Layla, a fellow mage a few years ahead of you. She offered to tutor you on the side in topics like Astrology and Alchemy. She seems to have a soft spot for students who struggle with the magical, and you are no exception.",
+            "She is a bit of a loner, but she is wicked smart, absent minded and super feminine. She ticks all your boxes immediately, and you instantly have a crush on her.",
+            "You don't know if she likes women, but you build up the courage to ask her out anyway.",
         ],
         step: 1
     },
     choices: [
         {
             id: 1,
-            text: "Ask around about the missing mage",
+            text: "Ask Layla to go on a picnic with you in the woods",
         },
         {
             id: 2,
-            text: "Visit the local tavern",
+            text: "Suggest going on a quest together",
         },
         {
             id: 3,
-            text: "Consult the journal the guild gave you",
+            text: "Invite Layla to go to the tavern with you",
+        },
+        {
+            id: 4,
+            text: "Invite Layla to go to hot springs with you",
+        },
+        {
+            id: 5,
+            text: "Ask around the guild to learn more about Layla.",
         },
     ],
 };

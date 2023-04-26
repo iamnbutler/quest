@@ -2,10 +2,9 @@
 
 import clsx from "clsx";
 import Tooltip from "./tooltip";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Choices from "./choices";
-import { UIMessage } from "../stores/messages";
-import Questwriter from "../lib/questwriter";
+import { UIMessage, useMessagesStore } from "../stores/messages";
 
 const Location = ({ location }: { location: LocationMetadata }) => {
     return (
@@ -91,44 +90,20 @@ export function Step({
     const { message, choices } = stepContent;
     const step = EXAMPLE_STEP;
     const { title, location } = step;
-    const [showChoices, setShowChoices] = useState(false);
-    const [showIndex, setShowIndex] = useState(0);
-
-    const handleTypewriterFinish = () => {
-        if (showIndex === message.content.length - 1) {
-            setShowChoices(true);
-        } else {
-            setShowIndex((prevIndex) => prevIndex + 1);
-        }
-    };
-
-    useEffect(() => {
-        setShowIndex(0);
-    }, [message.content]);
-
-    const questwriters = useMemo(
-        () =>
-            message.content.map((text, index) => (
-                <Questwriter
-                    key={index}
-                    text={text}
-                    speed={8}
-                    onFinished={() => handleTypewriterFinish()}
-                    play={index === showIndex}
-                />
-            )),
-        [message.content, showIndex]
-    );
+    const previousMessage = useMessagesStore((state) => state.currentMessage);
 
     return (
         <section>
             <Header id={message.step} title={title} location={location} />
-            <div className="mt-6 mb-7 flex flex-col gap-4">{questwriters}</div>
+            <div className="mt-6 mb-7 flex flex-col gap-4">
+                {message.content.map((text) => (
+                    <div>{text}</div>
+                ))}
+            </div>
             <footer className="mt-1 border-t border-white/10">
-                <div className={showChoices ? "" : "hidden"}>
-                    <Choices choices={choices} />
-                </div>
+                <Choices choices={choices} previousMessage={previousMessage} />
             </footer>
         </section>
     );
+
 }

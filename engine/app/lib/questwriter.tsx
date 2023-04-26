@@ -10,6 +10,7 @@ interface QuestwriterProps {
     play?: boolean;
     onFinished?: () => void;
     onStart?: () => void;
+    debug?: boolean; // new prop
 }
 
 /**
@@ -92,6 +93,10 @@ const Questwriter = (props: QuestwriterProps) => {
         () => (Array.isArray(props.text) ? props.text : [props.text]),
         [props.text]
     );
+
+    if (props.debug) { // render entire text without animation
+        return <div>{texts.join("")}</div>;
+    }
 
     return (
         <div>{texts[currentStringIndex].substring(0, currentCharIndex)}</div>

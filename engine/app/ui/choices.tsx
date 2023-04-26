@@ -5,7 +5,7 @@ import { slugify } from "@/app/lib/slugify"
 import { ThickArrowRightIcon } from "@radix-ui/react-icons";
 import * as prompt from "../lib/openai";
 import { ChatCompletionResponseMessage } from "openai";
-import { Choice } from "../stores/messages";
+import { Choice, UIMessage } from "../stores/messages";
 
 interface ChoiceProps {
     choice: Choice;
@@ -16,13 +16,14 @@ interface ChoiceProps {
 
 interface ChoicesProps {
     choices: Choice[];
+    previousMessage: UIMessage;
 }
 
 export default function Choices(props: ChoicesProps) {
     const [choicePicked, setChoicePicked] = useState('');
     const [choicesComplete, setChoicesComplete] = useState(false);
 
-    const { choices } = props;
+    const { choices, previousMessage } = props;
 
     const Choice = ({
         choice,
@@ -54,7 +55,7 @@ export default function Choices(props: ChoicesProps) {
             <button type="button"
                 className={buttonStyle}
                 onClick={(event) => {
-                    prompt.buildMessages(choiceMessage)
+                    prompt.buildMessages(choiceMessage, previousMessage);
                     setChoicePicked(slug);
                     setChoicesComplete(true);
                     event.preventDefault();
