@@ -1,0 +1,3 @@
+Origin: Belera
+
+History: A race of towering, muscular humanoids from the high-gravity world of Belera, the Belerians are known for their physical prowess and resilience. They have a tribal, warrior-based culture that values strength, honor, and martial skill. Despite their imposing appearance, the Belerians are not inherently aggressive and have been known to form strong, loyal bonds with their allies.
