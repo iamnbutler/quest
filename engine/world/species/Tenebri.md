@@ -1,9 +1,9 @@
-Tenebri
+# Tenebri
 
 Origin:
 Nyxos - Gliese 674
 
-Appearance:
+## Appearance:
 
 The Tenebri are an aquatic species with a humanoid form, standing shorter than the average human at approximately 1.2 meters (4 feet) tall. Their bodies exhibit various adaptations for living in the ocean while maintaining the ability to survive on land, much like turtles.
 
@@ -17,7 +17,7 @@ The Tenebri require immersion in water at least twice a day to maintain their he
 
 As a spacefaring civilization, the Tenebri have developed advanced technological solutions to survive outside their aquatic habitats. They wear specialized suits, designed to keep their skin moist and maintain a comfortable humidity level. These suits are equipped with a built-in system that recycles water, ensuring the Tenebri remain adequately hydrated during prolonged periods away from water sources.
 
-Culture:
+## Culture:
 
 The Tenebri are a deeply spiritual species, with a strong connection to their oceanic home and the bioluminescent creatures that inhabit it. Their culture is centered around the concept of balance and harmony, both within themselves and with the world around them.
 
@@ -27,7 +27,7 @@ The Tenebri value knowledge above all else, and their scientists are highly resp
 
 Despite their love for learning, the Tenebri are also fiercely protective of their secrets. They believe that some things are not meant to be shared with outsiders and will go to great lengths to keep their knowledge from falling into the wrong hands.
 
-Society:
+## Society:
 
 The Tenebri highly value knowledge, and their scientists have earned great respect throughout the galaxy. They have made significant contributions to fields such as biology, chemistry, and astronomy, though they tend to guard their discoveries closely.
 
@@ -51,7 +51,7 @@ The Tenebri's relationship with the [[Mantasari]] is more complex. The two speci
 
 On most core worlds Tenebri can be found with varying frequency. Companies and crews that can deal with their unique needs will often hire Tenebri as researchers, biologists and doctors due to their deep knowledge and affinity.
 
-History:
+## History:
 
 In 2489, humanity established diplomatic relations with the Tenebri, a private species from Nyxos in the Gliese 674 system. The Tenebri opened up new trade opportunities and joint research initiatives, driven by their interest in studying Earth's oceanic life. In 2502, the Nova'xilar and Lumi'vola factions emerged among the Tenebri, with the Lumi'vola feeling overshadowed by the Nova'xilar's growing influence and wary of human involvement in Tenebri affairs. The fragile alliance between the Mantasari and humanity was almost shattered in 2540 by the rogue Tenebri faction Veza'koras (Dark Currents), but the true Tenebri disavowed any knowledge of their actions.
 

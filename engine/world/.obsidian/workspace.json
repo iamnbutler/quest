@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "ec4c15897af8d65f",
+        "id": "aee4a86195910a7e",
         "type": "tabs",
         "children": [
           {
-            "id": "d036b4bebac8a386",
+            "id": "dd1b3db7d8ed7586",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -150,16 +150,16 @@
       "obsidian-textgenerator-plugin:Text Generator: Templates Packages Manager": false
     }
   },
-  "active": "6b90478859a6e302",
+  "active": "dd1b3db7d8ed7586",
   "lastOpenFiles": [
+    "textgenerator/prompts/Rewrite.md",
+    "Prompt Context.md",
+    "Timeline.md",
     "people/Myri.md",
     "people/Tenebri.md",
-    "Timeline.md",
     "people/Mantasari.md",
-    "Prompt Context.md",
     "people/Omnicosm.md",
     "people/Aethyri.md",
-    "textgenerator/prompts/Rewrite.md",
     "textgenerator/prompts/Expand.md",
     "textgenerator/prompts/default/simplify.md",
     "textgenerator/prompts/default/getTitles.md",
