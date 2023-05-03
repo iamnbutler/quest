@@ -150,8 +150,6 @@ async function getChatCompletion(
             apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
         });
 
-        console.log(JSON.stringify(configuration, null, 2))
-
         if (!configuration.apiKey) {
             throw new Error("No OpenAI API key found");
         }
