@@ -4,17 +4,33 @@
 
 Humanity discovers the first alien artifact on an asteroid in the outer solar system, known as the Monolith. This leads to a rapid acceleration of human space exploration and colonization, and it is later revealed to be a relic of the ancient Aethyri civilization.
 
+### 2289: Second Monolith Unearthed
+
+Two years after the first discovery, a second monolith, identical to the first, is unearthed on Mars. This supports the theory that the Aethyri civilization was spread across the solar system, sparking widespread excitement and fear about the potential existence of other alien civilizations.
+
 ### 2291: First human colony on the moon
 
 The United Nations Space Agency (UNSA) establishes the first human colony on the moon, known as Luna, as a research outpost. It is later expanded into humanity's first shipyard and spaceport.
+
+### 2293: Lunar Mining Incident
+
+A catastrophic accident at a helium-3 mining operation on Luna leads to the loss of over 200 lives and stirs unrest among the lunar colonists. This tragedy also exposes the unsafe working conditions and exploitation by Earth-based corporations, adding fuel to the brewing discontent.
 
 ### 2295: First Solar War
 
 Fighting breaks out between nations over the Monolith and the resources of the solar system, leading to the First Solar War. Humanity realizes they need to expand beyond the solar system to survive after large-scale destruction of infrastructure and loss of life due to the use of weapons of mass destruction.
 
+### 2296: Monolith Activates
+
+In the midst of the First Solar War, the Monolith on Mars inexplicably activates, broadcasting a signal into deep space. Although initially causing panic and escalating the conflict, it later becomes clear that the Monolith isn't a weapon but a beacon. This realization intensifies the race to decode the alien signal.
+
 ### 2297: The Exodus Program
 
 The UNSA catalyzes the Exodus Program, a moonshot plan to colonize three distant star systems in hopes that distance would help insulate against a single conflict destroying humanity.
+
+### 2301: Fracture of the Exodus Program
+
+Four years into the Exodus Program, ideological differences over how to govern the future colonies lead to a splintering of the program. This event, known as the Fracture, results in separate factions racing to launch their own colony ships.
 
 ### 2321: Encounter with The Omnicosm
 
@@ -24,9 +40,17 @@ Humanity encounters the advanced alien species, [[The Omnicosm]], for the first 
 
 After the clear demonstration of [[The Omnicosm]]'s technological superiority, the nations of Earth unite under the UNSA to finish the colony ships and massively bolster the fleet and humanities' military capabilities. A draft of all able-bodied humans age 14-24 is instituted, and a special training program to prepare for a new type of warfare is instituted.
 
+### 2327: Breakdown of the Draft
+
+By 2327, the mass drafting of humanity into military service begins to show severe societal strain. Riots and protests erupt across the globe, as individuals and groups resist the draft and the military-industrial complex that Earth has become. The UNSA is forced to re-evaluate its strategy, leading to more focused and specialized recruitment.
+
 ### 2330: Formation of Military Academies and Research Institutions
 
 The UNSA officially forms the Interstellar Defense Coalition (IDC), an elite military force specifically designed to counter potential threats from advanced alien species like [[The Omnicosm]]. Military academies and research institutions dedicated to the study of alien technology and tactical strategies are established across Earth and its colonies.
+
+### 2336: First IDC Combat AI
+
+In an attempt to mitigate human losses in potential future conflicts, the first IDC Combat AI, designated Aegis-1, is developed. Initially met with controversy over the ethics of AI in warfare, it eventually proves instrumental in defending against minor alien incursions.
 
 ### 2345: UNS Revelator Launch
 
@@ -39,6 +63,10 @@ The humans who would later be known as the [[Myri]] set out for [[Tau Ceti]] on 
 ### 2370: Discovery of Aethyri Ship
 
 UNS Revelator discovers a derelict [[Aethyri]] ship, providing humanity with valuable information about their advanced technology and insights into their long-lost civilization.
+
+### 2375: IDC Dark Project
+
+In response to the Aethyri ship discovery, the IDC initiates the Dark Project - a top-secret initiative to reverse-engineer and replicate Aethyri technology for use in humanity's defense.
 
 ### 2382: Breakthrough in Propulsion Technology
 
