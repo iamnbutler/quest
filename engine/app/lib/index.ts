@@ -1,3 +1,5 @@
+// Ref: https://www.dndbeyond.com/characters/95659495
+
 import * as def from './defs'
 
 export type Lineage = keyof typeof def.lineages;
