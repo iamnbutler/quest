@@ -16,7 +16,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                <main className="flex min-h-screen flex gap-16 justify-center p-24 font-mono text-sm">
+                <main className="flex min-h-screen gap-16 justify-center p-24 font-mono text-sm">
                     {ENABLE_DEBUG && <Debug />}
                     <section className="w-[540px]">
                         <div
