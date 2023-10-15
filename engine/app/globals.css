@@ -2,26 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 1, 1, 1;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 254, 254, 254;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 254, 254, 254;
-    --background-start-rgb: 1,1,1;
-    --background-end-rgb: 1,1,1;
-  }
-}
-
+html,
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    /* This prevents the overscroll behavior when scrolling past the end of the page in browsers like Chrome */
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior */
+    overscroll-behavior: none;
 }
