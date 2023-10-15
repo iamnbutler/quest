@@ -1,4 +1,4 @@
-export const Lineages = {
+export const lineages = {
     Dragonborn: 'Dragonborn',
     Dwarf: 'Dwarf',
     Elf: 'Elf',
