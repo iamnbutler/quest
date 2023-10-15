@@ -1,13 +1,13 @@
 export const lineages = {
-    Dragonborn: 'Dragonborn',
-    Dwarf: 'Dwarf',
-    Elf: 'Elf',
-    Gnome: 'Gnome',
-    HalfElf: 'Half-Elf',
-    HalfOrc: 'Half-Orc',
-    Halfling: 'Halfling',
-    Human: 'Human',
-    Tiefling: 'Tiefling'
+    dragonborn: 'Dragonborn',
+    dwarf: 'Dwarf',
+    elf: 'Elf',
+    gnome: 'Gnome',
+    half_elf: 'Half-Elf',
+    half_orc: 'Half-Orc',
+    halfling: 'Halfling',
+    human: 'Human',
+    tiefling: 'Tiefling'
 } as const;
 
 export const class_details = {

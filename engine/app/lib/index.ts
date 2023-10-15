@@ -1,9 +1,16 @@
 import * as def from './defs'
 
-type Lineage = keyof typeof def.lineages;
+export type Lineage = keyof typeof def.lineages;
 export type ClassName = keyof typeof def.class_details
 export type Subclasses = { [K in ClassName]: keyof typeof def.class_details[K]['subclasses'] };
 export type Subclass = Subclasses[ClassName];
+
+export const allLineages = def.lineages;
+export const randomLineage = (): Lineage => {
+    const keys = Object.keys(def.lineages);
+    const index = Math.floor(Math.random() * keys.length);
+    return keys[index] as Lineage;
+}
 
 type CharacterClass = {
     name: ClassName,
@@ -17,7 +24,7 @@ export type CharacterSheet = {
     given_names: Array<string>,
     family_name: string,
     lineage: Lineage,
-    class: CharacterClasses,
+    classes: CharacterClasses,
     level: number,
 }
 
@@ -34,7 +41,7 @@ export const new_character_sheet = (givenNames: string | string[], family_name: 
         given_names: Array.isArray(givenNames) ? givenNames : [givenNames],
         family_name,
         lineage,
-        class: classes,
+        classes,
         level: 1
     }
 }
