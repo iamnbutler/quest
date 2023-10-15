@@ -6,6 +6,8 @@ export type Subclasses = { [K in ClassName]: keyof typeof def.class_details[K]['
 export type Subclass = Subclasses[ClassName];
 
 export const allLineages = Object.keys(def.lineages) as Lineage[];
+export const allClasses = Object.keys(def.class_details) as ClassName[];
+
 export const randomLineage = (): Lineage => {
     const keys = Object.keys(def.lineages);
     const index = Math.floor(Math.random() * keys.length);

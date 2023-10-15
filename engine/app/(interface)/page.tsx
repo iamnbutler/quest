@@ -2,7 +2,7 @@
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import useCharacterStore from "../stores/character";
-import { allLineages } from "../lib";
+import { allLineages, allClasses } from "../lib";
 
 const ContextHeader = ({ title, subtitle }: { title: string, subtitle: string }) => {
     return (
@@ -57,6 +57,14 @@ function Home() {
     const [familyName, setFamilyName] = useState<string>('');
     const [lineageIx, setLineageIx] = useState<number>(0);
     const [currentStep, setCurrentStep] = useState(0);
+    const [classIx, setClassIx] = useState<number>(0);
+
+    const handleSetClass = (ix: number) => {
+        setClassIx(ix);
+        setCurrentStep(currentStep + 1);
+        setCharacter({ ...character, classes: [{ name: allClasses[classIx], level: 1 }] });
+    }
+
 
     const handleSetName = () => {
         setCurrentStep(currentStep + 1);
@@ -135,6 +143,21 @@ function Home() {
             }
             {currentStep > 1 && (
                 <UserText>{character.lineage}</UserText>
+            )}
+            {
+                currentStep === 2
+                && allClasses.map((charClass, ix) => (
+                    <button
+                        key={charClass}
+                        onClick={() => handleSetClass(ix)}
+                        className={clsx('text-left border hover:border-white/25 border-transparent')}
+                    >
+                        {charClass}
+                    </button>
+                ))
+            }
+            {currentStep > 2 && (
+                <UserText>{character.classes[0].name}</UserText>
             )}
         </div>
     );
