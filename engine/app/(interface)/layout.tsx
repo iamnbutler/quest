@@ -23,7 +23,7 @@ export default function Layout({
             <section className="max-w-[600px] col-span-6 border border-white/10 p-8 overflow-y-scroll"
             >
                 <div
-                    className={`flex flex-col prose prose-sm dark:prose-invert max-w-none prose-pre:leading-none prose-code:leading-none
+                    className={`flex flex-col dark:prose-invert max-w-none
                 `}
                 >
                     {children}

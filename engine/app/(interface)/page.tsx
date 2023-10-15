@@ -2,6 +2,7 @@
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import useCharacterStore from "../stores/character";
+import { allLineages } from "../lib";
 
 const ContextHeader = ({ title, subtitle }: { title: string, subtitle: string }) => {
     return (
@@ -24,6 +25,14 @@ const MetaText = ({ children }: { children: string }) => {
     )
 }
 
+const UserText = ({ children }: { children: string }) => {
+    return (
+        <div className="text-amber-200">
+            {children}
+        </div>
+    )
+}
+
 const Input = (props: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>) => {
     return (
         <input {...props}
@@ -32,11 +41,13 @@ const Input = (props: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInpu
     );
 }
 
-const NextButton = ({ disabledConditions, onClick }: { disabledConditions: boolean, onClick: () => void }) => {
+const NextButton = ({ disabledConditions, onClick }: { disabledConditions?: boolean, onClick: () => void }) => {
+    let disabled = disabledConditions || false;
+
     return (
         <button onClick={onClick}
-            style={{ opacity: disabledConditions ? 0.25 : 1, textAlign: 'left' }}
-            disabled={disabledConditions}>Next</button>
+            style={{ opacity: disabled ? 0.25 : 1, textAlign: 'left' }}
+            disabled={disabled}>Next</button>
     )
 }
 
@@ -44,11 +55,18 @@ function Home() {
     const { character, setCharacter } = useCharacterStore();
     const [givenName, setGivenName] = useState<string[]>(['']);
     const [familyName, setFamilyName] = useState<string>('');
+    const [lineageIx, setLineageIx] = useState<number>(0);
     const [currentStep, setCurrentStep] = useState(0);
 
     const handleSetName = () => {
         setCurrentStep(currentStep + 1);
         setCharacter({ ...character, given_names: givenName, family_name: familyName });
+    }
+
+    const handleSetLineage = (ix: number) => {
+        setLineageIx(ix);
+        setCurrentStep(currentStep + 1);
+        setCharacter({ ...character, lineage: allLineages[lineageIx] });
     }
 
     const name_string_to_arr = (name: string): Array<string> => {
@@ -63,7 +81,7 @@ function Home() {
     }, [character, currentStep, givenName, familyName]);
 
     return (
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-2">
             <ContextHeader
                 title={'New Adventure'}
                 subtitle={'Create Your Character'}
@@ -90,10 +108,34 @@ function Home() {
                     </>
                 )
                 : (
-                    <p>{character.name}</p>
+                    <UserText>{character.name}</UserText>
                 )
             }
-
+            {currentStep > 0 && (
+                <p>Where do your roots lie?</p>
+            )}
+            {currentStep === 1
+                && (
+                    <>
+                        {
+                            allLineages.map((lineage, ix) => (
+                                <button
+                                    key={lineage}
+                                    onClick={() => {
+                                        handleSetLineage(ix);
+                                    }}
+                                    className={clsx('text-left border hover:border-white/25 border-transparent')}
+                                >
+                                    {lineage}
+                                </button>
+                            ))
+                        }
+                    </>
+                )
+            }
+            {currentStep > 1 && (
+                <UserText>{character.lineage}</UserText>
+            )}
         </div>
     );
 }
