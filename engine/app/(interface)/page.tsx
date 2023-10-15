@@ -32,6 +32,14 @@ const Input = (props: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInpu
     );
 }
 
+const NextButton = ({ disabledConditions, onClick }: { disabledConditions: boolean, onClick: () => void }) => {
+    return (
+        <button onClick={onClick}
+            style={{ opacity: disabledConditions ? 0.25 : 1, textAlign: 'left' }}
+            disabled={disabledConditions}>Next</button>
+    )
+}
+
 function Home() {
     const { character, setCharacter } = useCharacterStore();
     const [givenName, setGivenName] = useState<string[]>(['']);
@@ -55,30 +63,37 @@ function Home() {
     }, [character, currentStep, givenName, familyName]);
 
     return (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-1">
             <ContextHeader
                 title={'New Adventure'}
                 subtitle={'Create Your Character'}
             />
-            <div>
-                <p>Welcome to Faerûn. What is your name, adventurer?</p>
-                <MetaText>Use spaces to add multiple given names.</MetaText>
-            </div>
-            <Input
-                name="given-names"
-                placeholder="Given Name(s)"
-                onChange={(e) => setGivenName(name_string_to_arr(e.target.value))}
-            />
-            <Input
-                name="family-name"
-                placeholder="Family Name"
-                onChange={(e) => setFamilyName(e.target.value)}
-            />
-            <button onClick={
-                () => handleSetName()
+            <p>Welcome to Faerûn. What is your name, adventurer?</p>
+            {currentStep === 0
+                ? (
+                    <>
+                        <MetaText>Use spaces to add multiple given names.</MetaText>
+                        <Input
+                            name="given-names"
+                            placeholder="Given Name(s)"
+                            onChange={(e) => setGivenName(name_string_to_arr(e.target.value))}
+                        />
+                        <Input
+                            name="family-name"
+                            placeholder="Family Name"
+                            onChange={(e) => setFamilyName(e.target.value)}
+                        />
+                        <NextButton
+                            disabledConditions={givenName[0] === '' || familyName === ''}
+                            onClick={() => handleSetName()}
+                        />
+                    </>
+                )
+                : (
+                    <p>{character.name}</p>
+                )
             }
-                style={{ opacity: givenName[0] === '' || familyName === '' ? 0.25 : 1, textAlign: 'left' }}
-                disabled={givenName[0] === '' || familyName === ''}>Confirm</button>
+
         </div>
     );
 }
