@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { CharacterSheet, new_character_sheet } from "../lib";
+import { CharacterSheet, update_character, new_character_sheet } from "../lib";
 
 interface CharacterStore {
     character: CharacterSheet;
@@ -15,7 +15,9 @@ const initialCharacter = new_character_sheet(
 
 const useCharacterStore = create<CharacterStore>()((set) => ({
     character: initialCharacter,
-    setCharacter: (character) => set({ character })
+    setCharacter: (character) => {
+        const updatedCharacter = update_character(character);
+        return set({ character: updatedCharacter });
+    }
 }));
-
 export default useCharacterStore;

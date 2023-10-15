@@ -33,6 +33,16 @@ export const character_name = (givenNames: string | string[], familyName: string
     return `${names} ${familyName}`;
 }
 
+/** Any fields that rely on other fields to update their values should be calculated here */
+export const update_character = (character: CharacterSheet): CharacterSheet => {
+    const { given_names, family_name } = character;
+    const name = character_name(given_names, family_name);
+    return {
+        ...character,
+        name,
+    }
+}
+
 export const new_character_sheet = (givenNames: string | string[], family_name: string, lineage: Lineage, classes: CharacterClasses): CharacterSheet => {
     const name = character_name(givenNames, family_name);
 
