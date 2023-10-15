@@ -9,8 +9,8 @@ interface CharacterStore {
 const initialCharacter = new_character_sheet(
     "Bilbo",
     "Baggins",
-    "halfling",
-    [{ name: "fighter", level: 1 }]
+    "Halfling",
+    [{ name: "Fighter", level: 1 }]
 )
 
 const useCharacterStore = create<CharacterStore>()((set) => ({

@@ -1,17 +1,17 @@
-export const lineages = {
-    dragonborn: 'Dragonborn',
-    dwarf: 'Dwarf',
-    elf: 'Elf',
-    gnome: 'Gnome',
-    half_elf: 'Half-Elf',
-    half_orc: 'Half-Orc',
-    halfling: 'Halfling',
-    human: 'Human',
-    tiefling: 'Tiefling'
+export const Lineages = {
+    Dragonborn: 'Dragonborn',
+    Dwarf: 'Dwarf',
+    Elf: 'Elf',
+    Gnome: 'Gnome',
+    Half_Elf: 'Half-Elf',
+    Half_Orc: 'Half-Orc',
+    Halfling: 'Halfling',
+    Human: 'Human',
+    Tiefling: 'Tiefling'
 } as const;
 
 export const class_details = {
-    artificer: {
+    Artificer: {
         name: 'Artificer',
         description: "Makers of magic-infused objects, artificers are defined by their inventive nature.",
         subclasses: {
@@ -21,7 +21,7 @@ export const class_details = {
             battle_smith: 'Battle Smith',
         }
     },
-    barbarian: {
+    Barbarian: {
         name: 'Barbarian',
         description: "For some, their rage springs from a communion with fierce animal spirits.",
         subclasses: {
@@ -35,7 +35,7 @@ export const class_details = {
             zealot: 'Path of the Zealot',
         }
     },
-    bard: {
+    Bard: {
         name: 'Bard',
         description: "Whether scholar, skald, or scoundrel, a bard weaves magic through words and music.",
         subclasses: {
@@ -49,7 +49,7 @@ export const class_details = {
             whispers: 'College of Whispers',
         }
     },
-    blood_hunter: {
+    "Blood Hunter": {
         name: 'Blood Hunter',
         description: "Often feared or misunderstood, and driven by an unending drive to destroy the wicked, blood hunters are clever, arcane warriors.",
         subclasses: {
@@ -59,7 +59,7 @@ export const class_details = {
             profane_soul: 'Order of the Profane Soul',
         }
     },
-    cleric: {
+    Cleric: {
         name: 'Cleric',
         description: "Clerics are intermediaries between the mortal world and the distant planes of the gods.",
         subclasses: {
@@ -84,7 +84,7 @@ export const class_details = {
             fate_domain: 'Fate Domain',
         }
     },
-    druid: {
+    Druid: {
         name: 'Druid',
         description: "Whether calling on the elemental forces of nature or emulating the creatures of the animal world, druids are an embodiment of nature's resilience, cunning, and fury.",
         subclasses: {
@@ -98,7 +98,7 @@ export const class_details = {
             circle_of_the_primeval: 'Circle of the Primeval',
         }
     },
-    fighter: {
+    Fighter: {
         name: 'Fighter',
         description: "Fighters share an unparalleled mastery with weapons and armor, and a thorough knowledge of the skills of combat.",
         subclasses: {
@@ -114,7 +114,7 @@ export const class_details = {
             samurai: 'Samurai',
         }
     },
-    monk: {
+    Monk: {
         name: 'Monk',
         description: "Monks are united in their ability to magically harness the energy that flows in their bodies.",
         subclasses: {
@@ -130,7 +130,7 @@ export const class_details = {
             way_of_the_sun_soul: 'Way of the Sun Soul',
         }
     },
-    paladin: {
+    Paladin: {
         name: 'Paladin',
         description: "Whether sworn before a god's altar and the witness of a priest, in a sacred glade before nature spirits and fey beings, or in a moment of desperation and grief with the dead as the only witness, a paladin's oath is a powerful bond.",
         subclasses: {
@@ -145,8 +145,7 @@ export const class_details = {
             oathbreaker: 'Oathbreaker',
         }
     },
-
-    ranger: {
+    Ranger: {
         name: 'Ranger',
         description: "Far from the bustle of cities and towns, past the hedges that shelter the most distant farms from the terrors of the wild, amid the dense-packed trees of trackless forests and across wide and empty plains, rangers keep their unending watch.",
         subclasses: {
@@ -160,8 +159,7 @@ export const class_details = {
             swarmkeeper: 'Swarmkeeper',
         }
     },
-
-    rogue: {
+    Rogue: {
         name: 'Rogue',
         description: "Rogues rely on skill, stealth, and their foes' vulnerabilities to get the upper hand in any situation.",
         subclasses: {
@@ -176,7 +174,7 @@ export const class_details = {
             thief: 'Thief',
         }
     },
-    sorcerer: {
+    Sorcerer: {
         name: 'Sorcerer',
         description: "Sorcerers carry a magical birthright conferred upon them by an exotic bloodline, some otherworldly influence, or exposure to unknown cosmic forces.",
         subclasses: {
@@ -191,7 +189,7 @@ export const class_details = {
             pyromancy: 'Pyromancy',
         }
     },
-    warlock: {
+    Warlock: {
         name: 'Warlock',
         description: "Warlocks are seekers of the knowledge that lies hidden in the fabric of the multiverse.",
         subclasses: {
@@ -206,8 +204,7 @@ export const class_details = {
             undying: 'Undying',
         }
     },
-
-    wizard: {
+    Wizard: {
         name: 'Wizard',
         description: "Wizards are supreme magic-users, defined and united as a class by the spells they cast.",
         subclasses: {
