@@ -1,6 +1,6 @@
 'use client';
-import { Step } from "./ui/step";
-import { useMessagesStore } from "./stores/messages";
+import { Step } from "../ui/step";
+import { useMessagesStore } from "../stores/messages";
 import { Suspense } from "react";
 
 function Home() {
