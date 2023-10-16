@@ -50,11 +50,13 @@ export default function Page() {
             </div>
             <ContextHeader title="Skills" subtitle={""} />
             <div>
-                {skills.map(skill => (
-                    <ul key={skill.name}>
-                        <li key={skill.name}>{skill.name} {skill.proficient && <span className="text-white/50">P</span>} Source: {skill.source ? skill.source : 'N/A'}</li>
-                    </ul>
-                ))}
+                <table className="table-fixed w-full">
+                    {skills.map(skill => (
+                        <TableRow
+                            key={skill.name}
+                            name={skill.name} value={skill.source ? "" : "N/A"} meta={skill.source ? skill.source : ""} />
+                    ))}
+                </table>
             </div>
         </div>
     )

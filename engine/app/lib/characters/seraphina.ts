@@ -28,26 +28,31 @@ export const seraphina_character_sheet: CharacterSheet = {
             name: 'Athletics',
             ability: "Dexterity",
             proficient: true,
+            source: 'Paladin Class',
         },
         {
             name: 'Insight',
             ability: "Wisdom",
             proficient: true,
+            source: 'Paladin Class',
         },
         {
             name: 'History',
             ability: "Intelligence",
             proficient: true,
+            source: 'Noble Background',
         },
         {
             name: 'Persuasion',
             ability: "Wisdom",
             proficient: true,
+            source: 'Noble Background',
         },
         {
             name: 'Perception',
             ability: "Charisma",
-            proficient: true
+            proficient: true,
+            source: 'Human Lineage',
         }
     ]
 }
