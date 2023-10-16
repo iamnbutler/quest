@@ -5,6 +5,7 @@ export const seraphina_character_sheet: CharacterSheet = {
     given_names: ['Seraphina'],
     family_name: 'Grey',
     lineage: 'Human',
+    background: 'Noble',
     level: 1,
     classes: [
         {
@@ -13,4 +14,12 @@ export const seraphina_character_sheet: CharacterSheet = {
             level: 1,
         }
     ],
+    ability_scores: {
+        strength: { total: 14, relative: 2 },
+        dexterity: { total: 12, relative: 1 },
+        constitution: { total: 13, relative: 1 },
+        intelligence: { total: 14, relative: 2 },
+        wisdom: { total: 10, relative: 0 },
+        charisma: { total: 15, relative: 2 },
+    }
 }

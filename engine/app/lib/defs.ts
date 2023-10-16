@@ -224,3 +224,86 @@ export const class_details = {
         }
     }
 } as const
+
+export const backgrounds = {
+    Acolyte: {
+        name: 'Acolyte',
+        description: "Served a temple and has devout connections to a specific deity."
+    },
+    Charlatan: {
+        name: 'Charlatan',
+        description: "A master manipulator, well-versed in scams and deceit."
+    },
+    Criminal: {
+        name: 'Criminal',
+        description: "A nefarious character with a history of breaking the law."
+    },
+    Entertainer: {
+        name: 'Entertainer',
+        description: "Blessed with a theatrical talent, they captivate audiences with performances."
+    },
+    FolkHero: {
+        name: 'Folk Hero',
+        description: "A hero of the common people, standing up against tyranny."
+    },
+    GuildArtisan: {
+        name: 'Guild Artisan',
+        description: "Has skills and support from a guild of craftsman."
+    },
+    Hermit: {
+        name: 'Hermit',
+        description: "Lived in seclusion, either for religious reasons or personal peace."
+    },
+    Noble: {
+        name: 'Noble',
+        description: "Born into a privileged life of power and wealth.",
+    },
+    Outlander: {
+        name: 'Outlander',
+        description: "Grew up in the wilds, away from civilization and its comforts."
+    },
+    Sage: {
+        name: 'Sage',
+        description: "Spent much of their life learning and studying. Has extensive knowledge on a particular subject."
+    },
+    Sailor: {
+        name: 'Sailor',
+        description: "Has extensive experience in sailing and navigation."
+    },
+    Soldier: {
+        name: 'Soldier',
+        description: "Experienced in battles and war tactics. Served a specific cause in the past."
+    },
+    Urchin: {
+        name: 'Urchin',
+        description: "Grew up in the streets doing whatever it took to survive."
+    },
+    Knight: {
+        name: 'Knight',
+        description: "Bears a noble title along with an oath of loyalty to a superior or order."
+    },
+    Pirate: {
+        name: 'Pirate',
+        description: "A swashbuckler of the seas, circumventing the law for personal gain."
+    },
+    Gladiator: {
+        name: 'Gladiator',
+        description: "Trained and performs in public fight shows for the amusement of others."
+    },
+    Spy: {
+        name: 'Spy',
+        description: "Highly skilled in espionage. Operates undercover to gather information."
+    },
+    BountyHunter: {
+        name: 'Bounty Hunter',
+        description: "Hunts targets for monetary reward."
+    },
+    Inheritor: {
+        name: 'Inheritor',
+        description: "Inherited something of great importance from a relative."
+    },
+    MonsterHunter: {
+        name: 'Monster Hunter',
+        description: "Sports a unique set of skills in hunting down and eradicating monstrous threats."
+    }
+} as const;
