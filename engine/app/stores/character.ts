@@ -1,20 +1,14 @@
 import { create } from "zustand";
-import { CharacterSheet, update_character, new_character_sheet } from "../lib";
+import { CharacterSheet, update_character } from "../lib";
+import { seraphina_character_sheet } from "../lib/characters/seraphina";
 
 interface CharacterStore {
     character: CharacterSheet;
     setCharacter: (character: CharacterSheet) => void;
 }
 
-const initialCharacter = new_character_sheet(
-    "Bilbo",
-    "Baggins",
-    "Halfling",
-    [{ name: "Fighter", level: 1 }]
-)
-
 const useCharacterStore = create<CharacterStore>()((set) => ({
-    character: initialCharacter,
+    character: seraphina_character_sheet,
     setCharacter: (character) => {
         const updatedCharacter = update_character(character);
         return set({ character: updatedCharacter });
