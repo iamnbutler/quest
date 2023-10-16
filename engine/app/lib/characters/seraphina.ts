@@ -9,6 +9,7 @@ export const seraphina_character_sheet: CharacterSheet = {
     classes: [
         {
             name: 'Paladin',
+            subclass: 'oath_of_devotion',
             level: 1,
         }
     ],

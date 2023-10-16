@@ -22,6 +22,7 @@ export const randomLineage = (): Lineage => {
 
 type CharacterClass = {
     name: ClassName,
+    subclass?: Subclass,
     level: number,
 }
 
