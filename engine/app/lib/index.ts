@@ -22,6 +22,13 @@ export const randomLineage = (): Lineage => {
     return keys[index] as Lineage;
 }
 
+export type Skill = {
+    name: string,
+    ability: string,
+    proficient?: boolean,
+    source?: string,
+}
+
 type CharacterClass = {
     name: ClassName,
     subclass?: Subclass,
@@ -53,6 +60,7 @@ export type CharacterSheet = {
     classes: CharacterClasses,
     level: number,
     ability_scores: AbilityScores,
+    skills: Array<Skill>,
 }
 
 export const character_name = (givenNames: string | string[], familyName: string): string => {
@@ -88,6 +96,7 @@ export const new_character_sheet = (givenNames: string | string[], family_name: 
             intelligence: { total: 12, relative: 1 },
             wisdom: { total: 10, relative: 0 },
             charisma: { total: 8, relative: -1 },
-        }
+        },
+        skills: [],
     }
 }

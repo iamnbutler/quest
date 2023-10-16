@@ -1,3 +1,5 @@
+import { Skill } from ".";
+
 export const lineages = {
     Dragonborn: 'Dragonborn',
     Dwarf: 'Dwarf',
@@ -305,5 +307,80 @@ export const backgrounds = {
     MonsterHunter: {
         name: 'Monster Hunter',
         description: "Sports a unique set of skills in hunting down and eradicating monstrous threats."
+    }
+} as const;
+
+const skills: Record<string, Skill> = {
+    Acrobatics: {
+        name: 'Acrobatics',
+        ability: 'Dexterity'
+    },
+    AnimalHandling: {
+        name: 'Animal Handling',
+        ability: 'Wisdom'
+    },
+    Arcana: {
+        name: 'Arcana',
+        ability: 'Intelligence'
+    },
+    Athletics: {
+        name: 'Athletics',
+        ability: 'Strength'
+    },
+    Deception: {
+        name: 'Deception',
+        ability: 'Charisma'
+    },
+    History: {
+        name: 'History',
+        ability: 'Intelligence'
+    },
+    Insight: {
+        name: 'Insight',
+        ability: 'Wisdom'
+    },
+    Intimidation: {
+        name: 'Intimidation',
+        ability: 'Charisma'
+    },
+    Investigation: {
+        name: 'Investigation',
+        ability: 'Intelligence'
+    },
+    Medicine: {
+        name: 'Medicine',
+        ability: 'Wisdom'
+    },
+    Nature: {
+        name: 'Nature',
+        ability: 'Intelligence'
+    },
+    Perception: {
+        name: 'Perception',
+        ability: 'Wisdom'
+    },
+    Performance: {
+        name: 'Performance',
+        ability: 'Charisma'
+    },
+    Persuasion: {
+        name: 'Persuasion',
+        ability: 'Charisma'
+    },
+    Religion: {
+        name: 'Religion',
+        ability: 'Intelligence'
+    },
+    SleightOfHand: {
+        name: 'Sleight of Hand',
+        ability: 'Dexterity'
+    },
+    Stealth: {
+        name: 'Stealth',
+        ability: 'Dexterity'
+    },
+    Survival: {
+        name: 'Survival',
+        ability: 'Wisdom'
     }
 } as const;

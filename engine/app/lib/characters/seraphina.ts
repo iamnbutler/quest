@@ -21,5 +21,32 @@ export const seraphina_character_sheet: CharacterSheet = {
         intelligence: { total: 14, relative: 2 },
         wisdom: { total: 10, relative: 0 },
         charisma: { total: 15, relative: 2 },
-    }
+    },
+    skills: [
+        {
+            name: 'Athletics',
+            ability: "Dexterity",
+            proficient: true,
+        },
+        {
+            name: 'Insight',
+            ability: "Wisdom",
+            proficient: true,
+        },
+        {
+            name: 'History',
+            ability: "Intelligence",
+            proficient: true,
+        },
+        {
+            name: 'Persuasion',
+            ability: "Charisma",
+            proficient: true,
+        },
+        {
+            name: 'Perception',
+            ability: "Charisma",
+            proficient: true
+        }
+    ]
 }
