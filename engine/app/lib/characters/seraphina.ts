@@ -7,6 +7,7 @@ export const seraphina_character_sheet: CharacterSheet = {
     lineage: 'Human',
     background: 'Noble',
     level: 1,
+    backstory: "Daughter to the lesser noble house, Seraphina Grey strides down the path of the Paladin, an oath of devotion her guiding light. Her past failures cast long shadows, fueling her drive for improvement and intensifying her pursuit of honor. Strong in mind and heart, she weaves her way through the world, both a knight and a scholar, seeking to outpace her past.",
     classes: [
         {
             name: 'Paladin',
@@ -40,7 +41,7 @@ export const seraphina_character_sheet: CharacterSheet = {
         },
         {
             name: 'Persuasion',
-            ability: "Charisma",
+            ability: "Wisdom",
             proficient: true,
         },
         {

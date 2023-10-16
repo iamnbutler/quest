@@ -59,6 +59,7 @@ export type CharacterSheet = {
     background: Background,
     classes: CharacterClasses,
     level: number,
+    backstory?: string,
     ability_scores: AbilityScores,
     skills: Array<Skill>,
 }
