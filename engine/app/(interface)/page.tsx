@@ -1,8 +1,5 @@
 'use client';
-import clsx from "clsx";
-import { useEffect, useState } from "react";
 import useCharacterStore from "../stores/character";
-import { allLineages, allClasses } from "../lib";
 import { ContextHeader } from "../ui/context-header";
 
 const MetaText = ({ children }: { children: string }) => {
@@ -35,118 +32,26 @@ const NextButton = ({ disabledConditions, onClick }: { disabledConditions?: bool
     return (
         <button onClick={onClick}
             style={{ opacity: disabled ? 0.25 : 1, textAlign: 'left' }}
-            disabled={disabled}>Next</button>
+            className="hover:underline"
+            disabled={disabled}>Continue</button>
     )
 }
 
 function Home() {
     const { character, setCharacter } = useCharacterStore();
-    const [givenName, setGivenName] = useState<string[]>(['']);
-    const [familyName, setFamilyName] = useState<string>('');
-    const [lineageIx, setLineageIx] = useState<number>(0);
-    const [currentStep, setCurrentStep] = useState(0);
-    const [classIx, setClassIx] = useState<number>(0);
-
-    const handleSetClass = (ix: number) => {
-        setClassIx(ix);
-        setCurrentStep(currentStep + 1);
-        setCharacter({ ...character, classes: [{ name: allClasses[classIx], level: 1 }] });
-    }
-
-
-    const handleSetName = () => {
-        setCurrentStep(currentStep + 1);
-        setCharacter({ ...character, given_names: givenName, family_name: familyName });
-    }
-
-    const handleSetLineage = (ix: number) => {
-        setLineageIx(ix);
-        setCurrentStep(currentStep + 1);
-        setCharacter({ ...character, lineage: allLineages[lineageIx] });
-    }
-
-    const name_string_to_arr = (name: string): Array<string> => {
-        return name.split(' ').map((name) => name.charAt(0).toUpperCase() + name.slice(1));
-    }
-
-    useEffect(() => {
-        console.log('Character:', character);
-        console.log('Current Step:', currentStep);
-        console.log('Given Name:', givenName);
-        console.log('Family Name:', familyName);
-    }, [character, currentStep, givenName, familyName]);
 
     return (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-3">
             <ContextHeader
                 title={'New Adventure'}
-                subtitle={'Create Your Character'}
+                subtitle={''}
             />
-            <p>Welcome to Faerûn. What is your name, adventurer?</p>
-            {currentStep === 0
-                ? (
-                    <>
-                        <MetaText>Use spaces to add multiple given names.</MetaText>
-                        <Input
-                            name="given-names"
-                            placeholder="Given Name(s)"
-                            onChange={(e) => setGivenName(name_string_to_arr(e.target.value))}
-                        />
-                        <Input
-                            name="family-name"
-                            placeholder="Family Name"
-                            onChange={(e) => setFamilyName(e.target.value)}
-                        />
-                        <NextButton
-                            disabledConditions={givenName[0] === '' || familyName === ''}
-                            onClick={() => handleSetName()}
-                        />
-                    </>
-                )
-                : (
-                    <UserText>{character.name}</UserText>
-                )
-            }
-            {currentStep > 0 && (
-                <p>Where do your roots lie?</p>
-            )}
-            {currentStep === 1
-                && (
-                    <>
-                        {
-                            allLineages.map((lineage, ix) => (
-                                <button
-                                    key={lineage}
-                                    onClick={() => {
-                                        handleSetLineage(ix);
-                                    }}
-                                    className={clsx('text-left border hover:border-white/25 border-transparent')}
-                                >
-                                    {lineage}
-                                </button>
-                            ))
-                        }
-                    </>
-                )
-            }
-            {currentStep > 1 && (
-                <UserText>{character.lineage}</UserText>
-            )}
-            {
-                currentStep === 2
-                && allClasses.map((charClass, ix) => (
-                    <button
-                        key={charClass}
-                        onClick={() => handleSetClass(ix)}
-                        className={clsx('text-left border hover:border-white/25 border-transparent')}
-                    >
-                        {charClass}
-                    </button>
-                ))
-            }
-            {currentStep > 2 && (
-                <UserText>{character.classes[0].name}</UserText>
-            )}
+            <p>You play as {character.name}, a Level {character.level} {character.classes[0].name}.</p>
+            <p>{character.backstory}</p>
+            <p>Welcome to Faerûn. Adventure forth.</p>
+            <NextButton
+                onClick={() => { }}
+            />
         </div>
     );
 }

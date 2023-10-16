@@ -139,7 +139,7 @@ export const class_details = {
             oath_of_the_ancients: 'Oath of the Ancients',
             oath_of_conquest: 'Oath of Conquest',
             oath_of_the_crown: 'Oath of the Crown',
-            oath_of_devotion: 'Oath of Devotion',
+            "Oath of Devotion": 'Oath of Devotion',
             oath_of_glory: 'Oath of Glory',
             oath_of_redemption: 'Oath of Redemption',
             oath_of_vengeance: 'Oath of Vengeance',

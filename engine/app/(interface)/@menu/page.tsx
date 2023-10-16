@@ -54,7 +54,7 @@ export default function Page() {
                     {skills.map(skill => (
                         <TableRow
                             key={skill.name}
-                            name={skill.name} value={skill.source ? "" : "N/A"} meta={skill.source ? skill.source : ""} />
+                            name={skill.name} value={""} meta={skill.source ? skill.source : ""} />
                     ))}
                 </table>
             </div>
