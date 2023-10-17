@@ -3,6 +3,7 @@ import { useState } from "react";
 import useCharacterStore from "../stores/character";
 import { useMessagesStore } from "../stores/messages";
 import { ContextHeader } from "../ui/context-header";
+import ReactMarkdown from "react-markdown";
 
 const NextButton = ({
     disabledConditions,
@@ -46,7 +47,11 @@ function Home() {
             <NextButton onClick={() => startAdventure()} />
             {start &&
                 messages.map((message) => {
-                    return <div key={message.message.step}>{message.message.content}</div>;
+                    return <div key={message.message.step}>
+                        {message.message.content.map((m, ix) => (
+                            <ReactMarkdown key={ix}>{m}</ReactMarkdown>
+                        ))}
+                    </div>;
                 })
             }
         </div>
