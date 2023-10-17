@@ -13,16 +13,17 @@ interface VStackProps {
     children: React.ReactNode;
     className?: string;
     el?: 'div' | 'list';
+    id?: string;
 }
 
-export const VStack = ({ size, children, className = '', el = 'div' }: VStackProps) => {
+export const VStack = ({ size, children, className = '', el = 'div', id }: VStackProps) => {
     const sizeClass = gap_size[size]
 
     const combinedClassName = `flex flex-col ${className} ${sizeClass}`;
 
     if (el === 'list') {
-        return <ul className={combinedClassName}>{children}</ul>;
+        return <ul className={combinedClassName} id={id}>{children}</ul>;
     }
 
-    return <div className={combinedClassName}>{children}</div>;
+    return <div className={combinedClassName} id={id}>{children}</div>;
 };

@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
 export const INITIAL_MESSAGE: UIMessage = {
+    isLoaded: true,
     message: {
         content: [
             "You are Seraphina Grey, a fledgling Paladin of the Church of Tyr, the God of Justice. Raised among the nobility, you've chosen a different path, dedicating yourself to the cause of righteousness.",
@@ -41,12 +42,14 @@ export type Choice = {
 
 export type MessageData = {
     content: string[];
+    // TODO: Remove this, it's not needed
     step: number;
 };
 
 export type UIMessage = {
     message: MessageData;
     choices: Choice[];
+    isLoaded?: boolean;
 };
 
 export type MessagesStore = {
