@@ -1,14 +1,16 @@
+import { VStack } from "../stack";
+
 interface TextOutputProps {
     content: string[];
 }
 
 export const TextOutput: React.FC<TextOutputProps> = ({ content }) => {
     return (
-        <div className="flex flex-col gap-2">
+        <VStack size={'md'}>
             {content.map((line, index) => (
                 <p key={index}>{line}</p>
             ))}
-        </div>
+        </VStack>
     );
 };
 
@@ -19,13 +21,13 @@ interface OptionInputProps {
 
 export const OptionInput: React.FC<OptionInputProps> = ({ choices, onChoose }) => {
     return (
-        <ul className="flex flex-col gap-3 pt-2 pb-6 list-decimal ml-7">
+        <VStack size={'md'} el={'list'} className="flex flex-col pt-2 pb-6 list-decimal ml-7">
             {choices.map((choice, index) => (
                 <li key={index} onClick={() => onChoose(choice)}>
                     {`${choice}`}
                 </li>
             ))}
-        </ul>
+        </VStack>
     );
 };
 

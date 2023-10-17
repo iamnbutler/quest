@@ -2,6 +2,7 @@
 import { INITIAL_MESSAGE } from "@/app/stores/messages";
 import { useGame } from "./core";
 import { ContinueButton, OptionInput, TextOutput } from "./primitive";
+import { VStack } from "../stack";
 
 interface GameContainerProps {
     onChoiceSelect: (choice: string) => void;
@@ -30,23 +31,23 @@ export const GameContainer: React.FC<GameContainerProps> = ({ onChoiceSelect }) 
     };
 
     return (
-        <div className="flex flex-col gap-6">
+        <VStack size={'lg'}>
             {/* Display past scenarios with faded text */}
             {gameState.pastScenarios.map((scenario, index) => (
-                <div key={index} className="text-white/50 flex flex-col gap-3 border-b border-white/10">
+                <VStack size={'md'} key={index} className="text-white/50 border-b border-white/10">
                     <TextOutput content={scenario.message.content} />
                     <OptionInput choices={scenario.choices.map(c => c.text)} onChoose={() => null} />
-                </div>
+                </VStack>
             ))}
             {/* Show current scenario */}
-            <div className="text-white flex flex-col gap-3">
+            <VStack size={'md'} className="text-white">
                 <TextOutput content={gameState.scenario.message.content} />
                 {gameState.scenario.choices.length > 0 ? (
                     <OptionInput choices={gameState.scenario.choices.map(c => c.text)} onChoose={handleChoose} />
                 ) : (
                     <ContinueButton onContinue={handleContinue} />
                 )}
-            </div>
-        </div>
+            </VStack>
+        </VStack>
     );
 };
