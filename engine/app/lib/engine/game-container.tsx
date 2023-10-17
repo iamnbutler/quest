@@ -3,6 +3,7 @@ import { INITIAL_MESSAGE } from "@/app/stores/messages";
 import { useGame } from "./core";
 import { ContinueButton, OptionInput, TextOutput } from "./primitive";
 import { VStack } from "../stack";
+import { ContextHeader } from "@/app/ui/context-header";
 
 interface GameContainerProps {
     onChoiceSelect: (choice: string) => void;
@@ -13,7 +14,7 @@ export const GameContainer: React.FC<GameContainerProps> = ({ onChoiceSelect }) 
 
     // Move to the next scenario
     const moveToNextScenario = () => {
-        const newScenario = INITIAL_MESSAGE;
+        const newScenario = { id: gameState.scenario.id + 1, content: INITIAL_MESSAGE };
         dispatch({ type: 'START_SCENARIO', payload: newScenario });
     };
 
@@ -34,16 +35,18 @@ export const GameContainer: React.FC<GameContainerProps> = ({ onChoiceSelect }) 
         <VStack size={'lg'}>
             {/* Display past scenarios with faded text */}
             {gameState.pastScenarios.map((scenario, index) => (
-                <VStack size={'md'} key={index} className="text-white/50 border-b border-white/10">
-                    <TextOutput content={scenario.message.content} />
-                    <OptionInput choices={scenario.choices.map(c => c.text)} onChoose={() => null} />
+                <VStack size={'md'} key={index} className="text-white/50">
+                    <ContextHeader title="Scenario" subtitle={scenario.id.toString()} />
+                    <TextOutput content={scenario.content.message.content} />
+                    <OptionInput choices={scenario.content.choices.map(c => c.text)} onChoose={() => null} />
                 </VStack>
             ))}
             {/* Show current scenario */}
             <VStack size={'md'} className="text-white">
-                <TextOutput content={gameState.scenario.message.content} />
-                {gameState.scenario.choices.length > 0 ? (
-                    <OptionInput choices={gameState.scenario.choices.map(c => c.text)} onChoose={handleChoose} />
+                <ContextHeader title="Scenario" subtitle={gameState.scenario.id.toString()} />
+                <TextOutput content={gameState.scenario.content.message.content} />
+                {gameState.scenario.content.choices.length > 0 ? (
+                    <OptionInput choices={gameState.scenario.content.choices.map(c => c.text)} onChoose={handleChoose} />
                 ) : (
                     <ContinueButton onContinue={handleContinue} />
                 )}

@@ -4,17 +4,22 @@ import { CharacterSheet } from '..';
 import { INITIAL_MESSAGE, UIMessage } from '@/app/stores/messages';
 import { seraphina_character_sheet } from '../characters/seraphina';
 
+type Scenario = {
+    id: number;
+    content: UIMessage;
+};
+
 interface GameState {
     character: CharacterSheet;
     party: Array<CharacterSheet>;
-    scenario: UIMessage;
-    pastScenarios: UIMessage[];
+    scenario: Scenario;
+    pastScenarios: Scenario[];
 }
 
 type GameAction =
     | { type: "CREATE_CHARACTER"; payload: CharacterSheet }
     | { type: "ADD_MEMBER_TO_PARTY"; payload: CharacterSheet }
-    | { type: "START_SCENARIO"; payload: UIMessage };
+    | { type: "START_SCENARIO"; payload: Scenario };
 
 const gameReducer = (state: GameState, action: GameAction): GameState => {
     switch (action.type) {
@@ -35,7 +40,7 @@ const gameReducer = (state: GameState, action: GameAction): GameState => {
 const startState: GameState = {
     character: seraphina_character_sheet,
     party: [seraphina_character_sheet],
-    scenario: INITIAL_MESSAGE,
+    scenario: { id: 0, content: INITIAL_MESSAGE },
     pastScenarios: [],
 };
 

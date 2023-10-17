@@ -21,7 +21,7 @@ interface OptionInputProps {
 
 export const OptionInput: React.FC<OptionInputProps> = ({ choices, onChoose }) => {
     return (
-        <VStack size={'md'} el={'list'} className="flex flex-col pt-2 pb-6 list-decimal ml-7">
+        <VStack size={'md'} el={'list'} className="flex flex-col pt-2 pb-3 list-decimal ml-7">
             {choices.map((choice, index) => (
                 <li key={index} onClick={() => onChoose(choice)}>
                     {`${choice}`}
