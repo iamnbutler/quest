@@ -5,43 +5,40 @@ import { Scenario } from "../lib/engine/core";
 import { VStack } from "../lib/stack";
 
 interface ChoiceProps {
-    scenario: Scenario;
-    current?: boolean;
-    onChoose: (choiceId: number) => void;
+  scenario: Scenario;
+  current?: boolean;
+  onChoose: (choiceId: number) => void;
 }
 
 export const Choice: React.FC<ChoiceProps> = ({
-    scenario,
-    onChoose,
-    current,
+  scenario,
+  onChoose,
+  current,
 }) => {
-    return (
-        <VStack size={"md"} el={"list"} className="flex flex-col pt-2 pb-3">
-            {scenario.content.choices.map((choice) => (
-                <li
-                    key={choice.text}
-                    className={clsx(
-                        current && "hover:border-white/50",
-                        !current && scenario.pickedChoice === choice.id
-                            ? "border-white/50"
-                            : "border-transparent",
-                        "border py-1 px-1.5 -mx-1.5",
-                    )}
-                >
-                    {current ? (
-                        <button
-                            className="text-left"
-                            onClick={() => onChoose(choice.id)}
-                        >
-                            {choice.text}
-                        </button>
-                    ) : (
-                        choice.text
-                    )}
-                </li>
-            ))}
-        </VStack>
-    );
+  return (
+    <VStack size={"md"} el={"list"} className="flex flex-col pt-2 pb-3">
+      {scenario.content.choices.map((choice) => (
+        <li
+          key={choice.text}
+          className={clsx(
+            current && "hover:border-white/50",
+            !current && scenario.pickedChoice === choice.id
+              ? "border-white/50"
+              : "border-transparent",
+            "border py-1 px-1.5 -mx-1.5",
+          )}
+        >
+          {current ? (
+            <button className="text-left" onClick={() => onChoose(choice.id)}>
+              {choice.text}
+            </button>
+          ) : (
+            choice.text
+          )}
+        </li>
+      ))}
+    </VStack>
+  );
 };
 
 // import { useState } from "react";
