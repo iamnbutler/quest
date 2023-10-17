@@ -4,12 +4,12 @@ import { useGame } from "./core";
 import { ContinueButton, OptionInput, TextOutput } from "./primitive";
 import { VStack } from "../stack";
 import { ContextHeader } from "@/app/ui/context-header";
+import { Choice } from "@/app/ui/choices";
 
 interface GameContainerProps {
-    onChoiceSelect: (choice: string) => void;
 }
 
-export const GameContainer: React.FC<GameContainerProps> = ({ onChoiceSelect }) => {
+export const GameContainer: React.FC<GameContainerProps> = () => {
     const [gameState, dispatch] = useGame();
 
     // Move to the next scenario
@@ -19,10 +19,8 @@ export const GameContainer: React.FC<GameContainerProps> = ({ onChoiceSelect }) 
     };
 
     // Handle player input
-    const handleChoose = (choice: string) => {
-        // Call onChoiceSelect from parent to notify about chosen option
-        onChoiceSelect(choice);
-        // Move to next scenario
+    const handleChoose = (choice: string, choiceIndex: number) => {
+        dispatch({ type: 'SELECT_OPTION', payload: choiceIndex });
         moveToNextScenario();
     };
 
@@ -38,18 +36,20 @@ export const GameContainer: React.FC<GameContainerProps> = ({ onChoiceSelect }) 
                 <VStack size={'md'} key={index} className="text-white/50">
                     <ContextHeader title="Scenario" subtitle={scenario.id.toString()} />
                     <TextOutput content={scenario.content.message.content} />
-                    <OptionInput choices={scenario.content.choices.map(c => c.text)} onChoose={() => null} />
+                    <Choice scenario={scenario} onChoose={handleChoose} />
                 </VStack>
             ))}
             {/* Show current scenario */}
             <VStack size={'md'} className="text-white">
                 <ContextHeader title="Scenario" subtitle={gameState.scenario.id.toString()} />
                 <TextOutput content={gameState.scenario.content.message.content} />
-                {gameState.scenario.content.choices.length > 0 ? (
-                    <OptionInput choices={gameState.scenario.content.choices.map(c => c.text)} onChoose={handleChoose} />
-                ) : (
-                    <ContinueButton onContinue={handleContinue} />
-                )}
+                {gameState.scenario.content.choices.length > 0 ?
+                    (
+                        <Choice scenario={gameState.scenario} onChoose={handleChoose} current />
+                    )
+                    : (
+                        <ContinueButton onContinue={handleContinue} />
+                    )}
             </VStack>
         </VStack>
     );

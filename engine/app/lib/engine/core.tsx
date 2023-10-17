@@ -4,9 +4,10 @@ import { CharacterSheet } from '..';
 import { INITIAL_MESSAGE, UIMessage } from '@/app/stores/messages';
 import { seraphina_character_sheet } from '../characters/seraphina';
 
-type Scenario = {
+export type Scenario = {
     id: number;
     content: UIMessage;
+    pickedChoice?: number;
 };
 
 interface GameState {
@@ -19,7 +20,8 @@ interface GameState {
 type GameAction =
     | { type: "CREATE_CHARACTER"; payload: CharacterSheet }
     | { type: "ADD_MEMBER_TO_PARTY"; payload: CharacterSheet }
-    | { type: "START_SCENARIO"; payload: Scenario };
+    | { type: "START_SCENARIO"; payload: Scenario }
+    | { type: 'SELECT_OPTION'; payload: number };
 
 const gameReducer = (state: GameState, action: GameAction): GameState => {
     switch (action.type) {
@@ -32,6 +34,9 @@ const gameReducer = (state: GameState, action: GameAction): GameState => {
         case 'START_SCENARIO':
             const pastScenarios = [...state.pastScenarios, state.scenario];
             return { ...state, scenario: action.payload, pastScenarios };
+        case 'SELECT_OPTION':
+            const updatedScenario = { ...state.scenario, pickedChoice: action.payload };
+            return { ...state, scenario: updatedScenario };
         default:
             return state;
     }
