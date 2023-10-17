@@ -4,7 +4,7 @@ interface TextOutputProps {
 
 export const TextOutput: React.FC<TextOutputProps> = ({ content }) => {
     return (
-        <div>
+        <div className="flex flex-col gap-2">
             {content.map((line, index) => (
                 <p key={index}>{line}</p>
             ))}
@@ -19,10 +19,10 @@ interface OptionInputProps {
 
 export const OptionInput: React.FC<OptionInputProps> = ({ choices, onChoose }) => {
     return (
-        <ul>
+        <ul className="flex flex-col gap-3 pt-2 pb-6 list-decimal ml-7">
             {choices.map((choice, index) => (
                 <li key={index} onClick={() => onChoose(choice)}>
-                    {choice}
+                    {`${choice}`}
                 </li>
             ))}
         </ul>

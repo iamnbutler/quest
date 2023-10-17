@@ -8,6 +8,7 @@ interface GameState {
     character: CharacterSheet;
     party: Array<CharacterSheet>;
     scenario: UIMessage;
+    pastScenarios: UIMessage[];
 }
 
 type GameAction =
@@ -24,7 +25,8 @@ const gameReducer = (state: GameState, action: GameAction): GameState => {
             const newParty = [...state.party, action.payload];
             return { ...state, party: newParty };
         case 'START_SCENARIO':
-            return { ...state, scenario: action.payload };
+            const pastScenarios = [...state.pastScenarios, state.scenario];
+            return { ...state, scenario: action.payload, pastScenarios };
         default:
             return state;
     }
@@ -34,6 +36,7 @@ const startState: GameState = {
     character: seraphina_character_sheet,
     party: [seraphina_character_sheet],
     scenario: INITIAL_MESSAGE,
+    pastScenarios: [],
 };
 
 const GameContext = createContext<[GameState, React.Dispatch<GameAction>] | undefined>(undefined);
