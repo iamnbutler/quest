@@ -63,19 +63,6 @@ async function buildMessages(message: ChatCompletionRequestMessage, previousMess
     }
 }
 
-// const locationInstructions = `First, Please provide a description of the location, including the name of the province and area, separated by the delimiter "|", and wrapped in the delimiter "||". For example:
-
-// ||Arcton|Arcton is a province bordering the mysterious kingdom of Drogath. Home to small towns like Sorrow's Reach, Willow's Bend, and Raven's Hollow, it fosters a strong sense of community. The provincial capital, Caelum's Crest, serves as a hub for commerce and politics.|Sorrow's Reach|Sorrow's Reach is a close-knit village in Arcton, surrounded by dense forests. Its residents, including farmers, blacksmiths, and weavers, live a non-magical life. Tensions arise due to Drogath's abundant magic use, but the village remains resilient.||
-
-// Please use the following format for the response:
-
-// ||PROVINCE_NAME|PROVINCE_DESCRIPTION|AREA_NAME|AREA_DESCRIPTION||
-
-// Please ensure that the province name in your response matches one of these options: 'Sylveria', 'Calendria', 'Kael', 'Scepter Isle', 'Darador', 'Alderac', 'Calladore', 'Arcton'.
-
-// Only change the province name if the user has specified a choice that would involve traveling to a different province.
-// `
-
 const formattingInstructions = `Based on the current situation in the story and the choice the user provides contune the story, then provide 2-5 questions or actions the player can choose from to continue the story. List the options with numbers, followed by a colon, and then the option text.
 
 1: Foo
@@ -99,7 +86,7 @@ When two characters talk to each other ensure that the dialogue contains at leas
 `;
 
 function parsedChoices(response: ChatCompletionResponseMessage | undefined): ParsedChoicesResponse {
-    if (response === undefined) {
+    if (response === undefined || response.content === undefined) {
         throw new Error("No response from OpenAI");
     }
 
