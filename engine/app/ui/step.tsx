@@ -2,7 +2,6 @@
 
 import clsx from "clsx";
 import Tooltip from "./tooltip";
-import { useEffect, useState } from "react";
 import Choices from "./choices";
 import { UIMessage, useMessagesStore } from "../stores/messages";
 import { nanoid } from "nanoid";
