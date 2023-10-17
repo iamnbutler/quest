@@ -2,30 +2,6 @@
 import useCharacterStore from "../stores/character";
 import { ContextHeader } from "../ui/context-header";
 
-const MetaText = ({ children }: { children: string }) => {
-    return (
-        <div className="text-xs text-white/50">
-            {children}
-        </div>
-    )
-}
-
-const UserText = ({ children }: { children: string }) => {
-    return (
-        <div className="text-amber-200">
-            {children}
-        </div>
-    )
-}
-
-const Input = (props: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>) => {
-    return (
-        <input {...props}
-            className="bg-inherit placeholder:text-white/50 border-b border-transparent focus:border-white/30 focus:ring-0 focus:outline-none"
-        />
-    );
-}
-
 const NextButton = ({ disabledConditions, onClick }: { disabledConditions?: boolean, onClick: () => void }) => {
     let disabled = disabledConditions || false;
 
