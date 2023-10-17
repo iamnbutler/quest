@@ -22,49 +22,38 @@ function buildSystemMessage(): ChatCompletionRequestMessage {
     };
 }
 
-async function buildMessages(
-    message: ChatCompletionRequestMessage,
-    previousMessages: UIMessage[],
-    party: Party,
-) {
+function buildContextMessage(
+    input_context: string,
+): ChatCompletionRequestMessage[] {
     const systemMessage = buildSystemMessage();
 
-    const previousMessagesString = previousMessages
-        .map((previousMessage) => previousMessage.message.content.join("\n"))
-        .join("\n");
-
     const previousMessageContext = `
-      For your reference, here is the most recent part of the story:
+      For your reference, here is the most recent part of the story, and other important context:
 
-      4{}
-
-      ${previousMessagesString}`;
-
-    const currentParty = `
-        This is the current party. Use it to help you understand the characters, how they think, how they would respond, and the way they would respond to each other.
-
-        ${party
-            .map((partyMember) => formatCharacterAsString(partyMember))
-            .join("\n")}
-    `;
+      ${input_context}`;
 
     const finalMessageContent = `${formattingInstructions}
 
-  ${previousMessageContext}
+  ${previousMessageContext}`;
 
-  ${currentParty}
+    const context = {
+        role: "user",
+        content: finalMessageContent,
+    } as ChatCompletionRequestMessage
 
-  ${message.content}`;
+    const messages = [systemMessage, context];
 
-    message.content = finalMessageContent;
+    return messages;
+}
 
-    const messages = [systemMessage, message];
-
-    const completion = await getChatCompletion(messages);
+async function fetchNewMessage(
+    context_messages: ChatCompletionRequestMessage[],
+): Promise<ChatCompletionResponseMessage> {
+    const completion = await getChatCompletion(context_messages);
     const returnMessages = completion.choices[0].message;
 
     if (returnMessages) {
-        storeMessage(returnMessages);
+        return returnMessages;
     } else {
         throw new Error("Couldn't store message, No response from OpenAI");
     }
@@ -182,4 +171,4 @@ async function getChatCompletion(
     }
 }
 
-export { buildMessages, parsedChoices, getChatCompletion };
+export { buildContextMessage, fetchNewMessage, parsedChoices, getChatCompletion };

@@ -8,7 +8,7 @@ export * from './scenario';
 export * from './primitive';
 export * from './game-container';
 
-interface GameState {
+export interface GameState {
     character: CharacterSheet;
     party: Array<CharacterSheet>;
     scenario: Scenario;
