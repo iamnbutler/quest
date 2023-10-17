@@ -1,61 +1,18 @@
-"use client";
-import { useState } from "react";
-import useCharacterStore from "../stores/character";
-import { useMessagesStore } from "../stores/messages";
-import { ContextHeader } from "../ui/context-header";
-import ReactMarkdown from "react-markdown";
+'use client'
+import { GameProvider } from "@/app/lib/engine/core";
+import { GameContainer } from "@/app/lib/engine/game-container";
 
-const NextButton = ({
-    disabledConditions,
-    onClick,
-}: {
-    disabledConditions?: boolean;
-    onClick: () => void;
-}) => {
-    let disabled = disabledConditions || false;
-
-    return (
-        <button
-            onClick={onClick}
-            style={{ opacity: disabled ? 0.25 : 1, textAlign: "left" }}
-            className="hover:underline"
-            disabled={disabled}
-        >
-            Continue
-        </button>
-    );
-};
-
-function Home() {
-    const { character, setCharacter } = useCharacterStore();
-    const [start, setStart] = useState(false);
-    const { messages } = useMessagesStore();
-
-    const startAdventure = () => {
-        setStart(true);
+const App: React.FC = () => {
+    const onChoiceSelect = (choice: string) => {
+        // Do something when a choice is selected if needed
+        console.log(`Choice selected: ${choice}`);
     };
 
     return (
-        <div className="flex flex-col gap-3">
-            <ContextHeader title={"New Adventure"} subtitle={""} />
-            <p>
-                You play as {character.name}, a Level {character.level}{" "}
-                {character.classes[0].name}.
-            </p>
-            <p>{character.backstory}</p>
-            <p>Welcome to Faerûn. Adventure forth.</p>
-            <NextButton onClick={() => startAdventure()} />
-            {start &&
-                messages.map((message) => {
-                    return <div key={message.message.step}>
-                        {message.message.content.map((m, ix) => (
-                            <ReactMarkdown key={ix}>{m}</ReactMarkdown>
-                        ))}
-                    </div>;
-                })
-            }
-        </div>
+        <GameProvider>
+            <GameContainer onChoiceSelect={onChoiceSelect} />
+        </GameProvider>
     );
-}
+};
 
-export default Home;
+export default App;
