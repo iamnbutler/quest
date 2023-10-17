@@ -33,15 +33,6 @@ export const OptionInput: React.FC<OptionInputProps> = ({ choices, onChoose }) =
     );
 };
 
-interface ContinueButtonProps {
-    onContinue: () => void;
-}
-
-export const ContinueButton: React.FC<ContinueButtonProps> = ({ onContinue }) => {
-    return <button onClick={onContinue}>Continue</button>;
-};
-
-
 interface LoadingIndicatorProps {
     dotInterval?: number;
     maxDots?: number;

@@ -28,11 +28,6 @@ export const GameContainer: React.FC<GameContainerProps> = () => {
         moveToNextScenario()
     };
 
-    const handleContinue = () => {
-        // Move to next scenario
-        moveToNextScenario()
-    };
-
     return (
         <>
             <div className="fixed bottom-4 left-4 opacity-100 text-[9px] text-white max-w-xs leading-none">
