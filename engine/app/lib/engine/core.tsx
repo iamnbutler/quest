@@ -1,6 +1,8 @@
+'use client'
 import { useReducer, createContext, useContext, ReactNode } from 'react';
 import { CharacterSheet } from '..';
 import { INITIAL_MESSAGE, UIMessage } from '@/app/stores/messages';
+import { seraphina_character_sheet } from '../characters/seraphina';
 
 interface GameState {
     character: CharacterSheet;
@@ -29,8 +31,8 @@ const gameReducer = (state: GameState, action: GameAction): GameState => {
 };
 
 const startState: GameState = {
-    character: {} as CharacterSheet,
-    party: [],
+    character: seraphina_character_sheet,
+    party: [seraphina_character_sheet],
     scenario: INITIAL_MESSAGE,
 };
 
