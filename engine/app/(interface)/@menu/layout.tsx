@@ -1,7 +1,7 @@
 export default function MenuLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-  return <section className="bg-green-200">{children}</section>;
+    return <section>{children}</section>;
 }
