@@ -13,7 +13,7 @@ export const GameContainer: React.FC<GameContainerProps> = ({ onChoiceSelect }) 
 
     // Move to the next scenario
     const moveToNextScenario = () => {
-        const newScenario = INITIAL_MESSAGE; // Make the decision to get new scenario based on the game logic
+        const newScenario = INITIAL_MESSAGE;
         dispatch({ type: 'START_SCENARIO', payload: newScenario });
     };
 
