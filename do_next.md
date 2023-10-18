@@ -1,0 +1,1 @@
+- Simple "roll for success" on choices, some choices will need to be updated to require a certain roll to succeed.
