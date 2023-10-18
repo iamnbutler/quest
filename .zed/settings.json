@@ -1,0 +1,16 @@
+{
+  "buffer_font_family": "iA Writer Mono V",
+  "preferred_line_length": 100,
+  "tab_size": 4,
+  "format_on_save": "on",
+  "languages": {
+    "TypeScript": {
+      "show_copilot_suggestions": true,
+      "tab_size": 2
+    },
+    "TSX": {
+      "show_copilot_suggestions": true,
+      "tab_size": 2
+    }
+  }
+}
