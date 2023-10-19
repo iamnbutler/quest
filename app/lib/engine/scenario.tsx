@@ -1,7 +1,7 @@
 import { UIMessage } from "@/app/stores/messages";
-import { buildContextMessage } from "../openai";
+import { buildContextMessage, parsedChoices } from "../openai";
 import { GameState } from "./core";
-import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from "openai";
+import OpenAI from "openai";
 
 export type Scenario = {
   id: number;
@@ -20,20 +20,14 @@ export const createNewScenario = (id: number): Scenario => ({
   },
 });
 
-export const updateScenarioContent = (
-  scenario: Scenario,
-  newContent: UIMessage,
-): Scenario => {
+export const updateScenarioContent = (scenario: Scenario, newContent: UIMessage): Scenario => {
   return {
     ...scenario,
     content: newContent,
   };
 };
 
-export const updateScenarioPickedChoice = (
-  scenario: Scenario,
-  newChoice: number,
-): Scenario => {
+export const updateScenarioPickedChoice = (scenario: Scenario, newChoice: number): Scenario => {
   return {
     ...scenario,
     pickedChoice: newChoice,
@@ -63,8 +57,7 @@ const contextFromGameState = (state: GameState) => {
 
     // If adding the scenario description makes the context too long, slice from the beginning
     if ((context + scenarioDescription).length > MAX_CHARS_FOR_PAST_SCENARIOS) {
-      const overFlow =
-        (context + scenarioDescription).length - MAX_CHARS_FOR_PAST_SCENARIOS;
+      const overFlow = (context + scenarioDescription).length - MAX_CHARS_FOR_PAST_SCENARIOS;
       context = context.slice(overFlow);
     }
     context += scenarioDescription;
@@ -74,8 +67,7 @@ const contextFromGameState = (state: GameState) => {
   context += `- Current scenario ${currentScenario.id}:\n   ${currentScenario.content.message.content}\n`;
 
   if (currentScenario.pickedChoice !== undefined) {
-    const choice =
-      currentScenario.content.choices[currentScenario.pickedChoice];
+    const choice = currentScenario.content.choices[currentScenario.pickedChoice];
     context += `   ${state.character.name} chose: ${choice.text}\n`;
   } else {
     context += "   Choices:\n";
@@ -96,19 +88,19 @@ export const generateScenario = async (
   const context_message = buildContextMessage(context);
 
   const res_message = await fetchScenario(context_message);
-  // const message_with_choices = parsedChoices(res_message);
+  const message_with_choices = parsedChoices(res_message);
 
   console.log(JSON.stringify(res_message, null, 2));
 
   const content = {
     message: {
-      // content: [message_with_choices.updatedMessage],
-      content: ["message_with_choices.updatedMessage"],
+      content: [message_with_choices.updatedMessage],
+      // content: ["message_with_choices.updatedMessage"],
       // TODO: Remove this
       step: 0,
     },
-    // choices: message_with_choices.choices,
-    choices: [{ id: 0, text: "test" }],
+    choices: message_with_choices.choices,
+    // choices: [{ id: 0, text: "test" }],
   };
 
   return {
@@ -117,23 +109,18 @@ export const generateScenario = async (
   };
 };
 
-export const fetchScenario = async (
-  messages: ChatCompletionRequestMessage[],
-) => {
+export const fetchScenario = async (messages: OpenAI.ChatCompletionMessage[]) => {
   const key = process.env.OPENAI_API_KEY;
 
-  console.log(key);
-  const configuration = new Configuration({
+  const openai = new OpenAI({
     apiKey: key,
   });
 
-  if (!configuration.apiKey) {
+  if (!openai.apiKey) {
     throw new Error("No OpenAI API key found");
   }
 
-  const openai = new OpenAIApi(configuration);
-
-  const chatCompletion = await openai.createChatCompletion({
+  const chatCompletion = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     messages,
   });
