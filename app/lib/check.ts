@@ -20,3 +20,21 @@ export type SkillCheck = {
 };
 
 export type SkillCheckResult = ReturnType<typeof skillCheck>;
+
+export const checkResultString = (
+  check: SkillCheckResult,
+  successText: string,
+  failureText: string,
+  criticalSuccessText?: string,
+  criticalFailureText?: string,
+): string => {
+  if (check.isCriticalSuccess) {
+    return criticalSuccessText || successText;
+  } else if (check.isCriticalFailure) {
+    return criticalFailureText || failureText;
+  } else if (check.isSuccess) {
+    return successText;
+  } else {
+    return failureText;
+  }
+};
